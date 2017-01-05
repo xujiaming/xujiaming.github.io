@@ -232,7 +232,7 @@ a {
 }
 #container .left-col {
   background: rgba(255,255,255,0.85);
-  width: 300px;
+  width: 400px;
   position: fixed;
   opacity: 1;
   -webkit-transition: all 0.2s ease-in;
@@ -263,7 +263,7 @@ a {
   right: 0;
   min-height: 100%;
   background: rgba(255,255,255,0.8);
-  left: 300px;
+  left: 400px;
   width: auto;
 }
 @media screen and (max-width: 800px) {
@@ -681,7 +681,7 @@ a {
 }
 #header .header-menu li a {
   font-size: 0.875rem;
-  min-width: 300px;
+  min-width: 400px;
 }
 #header .switch-area {
   position: relative;
@@ -1027,7 +1027,7 @@ a {
 }
 .hide-labels {
   position: fixed;
-  left: 378px;
+  left: 478px;
   top: 30px;
   padding: 1px;
   border: none;
@@ -1047,7 +1047,7 @@ a {
   opacity: 1;
 }
 #post-nav-button {
-  left: 300px;
+  left: 400px;
   top: 61.8%;
 }
 #post-nav-button a {
@@ -1077,6 +1077,19 @@ color
 }
 .post-list li:hover a {
   color: #88acdb;
+}
+.ui-tooltip {
+  padding: 6px;
+  max-width: 30em;
+  -webkit-box-shadow: 0 0 0.8em rgba(0,0,0,0.6);
+  box-shadow: 0 0 0.8em rgba(0,0,0,0.6);
+  color: #fff;
+  font-family: "Lucida Grande", Verdana, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 0.9em;
+  background: rgba(0,0,0,0.65);
+}
+body .ui-tooltip {
+  border: 1px solid #fff;
 }
 .pace .pace-progress {
   background: #77b6ff;
@@ -1373,6 +1386,8 @@ color
   background: rgba(255,255,255,0.4);
   -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
   box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  border-left: 5px solid rgba(112,134,142,0.85);
+  background: rgba(255,255,255,0.7);
 }
 .article-entry blockquote p {
   margin: 0.4em auto;
@@ -1677,7 +1692,7 @@ li:hover {
 }
 #tocButton {
   position: fixed;
-  left: 220px;
+  left: 320px;
   top: 385px;
   font-size: 0.9em;
   font-weight: bold;
@@ -1694,7 +1709,7 @@ li:hover {
 }
 .toc-article {
   position: fixed;
-  width: 230px;
+  width: 330px;
   top: 378px;
   bottom: 1em;
   left: 0;
@@ -2225,6 +2240,9 @@ aside.comment-bar:active {
   border-radius: 3px;
   -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
   box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
+  var: 1;
+  color: #fff;
+  background: rgba(153,204,153,0.7);
 }
 pre .comment,
 pre .title {
@@ -2758,40 +2776,40 @@ pre .javascript .function {
   font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei" "Lucida Grande", Verdana, "Helvetica Neue", Arial;
 }
 .tagcloud a.color0 {
-  background: #88acdb;
+  background: #ba8f6c;
 }
 .tagcloud a.color0::before {
-  border-right-color: #88acdb;
+  border-right-color: #ba8f6c;
 }
 .tagcloud a.color1 {
-  background: #ffa07a;
+  background: #ff945c;
 }
 .tagcloud a.color1::before {
-  border-right-color: #ffa07a;
+  border-right-color: #ff945c;
 }
 .tagcloud a.color2 {
-  background: #f08080;
+  background: #7b5d5f;
 }
 .tagcloud a.color2::before {
-  border-right-color: #f08080;
+  border-right-color: #7b5d5f;
 }
 .tagcloud a.color3 {
-  background: #76becc;
+  background: #f5c7b7;
 }
 .tagcloud a.color3::before {
-  border-right-color: #76becc;
+  border-right-color: #f5c7b7;
 }
 .tagcloud a.color4 {
-  background: #918597;
+  background: #cfb7c4;
 }
 .tagcloud a.color4::before {
-  border-right-color: #918597;
+  border-right-color: #cfb7c4;
 }
 .tagcloud a.color5 {
-  background: #6fc0e4;
+  background: #918597;
 }
 .tagcloud a.color5::before {
-  border-right-color: #6fc0e4;
+  border-right-color: #918597;
 }
 .tagcloud a.color6 {
   background: #bc8f8f;
@@ -3092,4 +3110,14 @@ p.no-result {
   color: #808080;
   font-family: Times, Georgia serif;
   border-bottom: 2px solid #d3d3d3;
+}
+body {
+  background: #808080;
+}
+.article-header {
+  border-left: 5px solid #666;
+}
+.article-more-link a {
+  background: #4d4d4d;
+  font-size: 0.8em;
 }
