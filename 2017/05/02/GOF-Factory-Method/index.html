@@ -11,7 +11,7 @@
     
     <title>
         
-            归档: 2017 | 
+            设计模式-工厂模式 GOF-Factory-Method | 
         
         mingCode
     </title>
@@ -35,7 +35,7 @@
     <meta name="theme-color" content="#222222">
     <meta name="author" content="xjm">
     <meta name="description" content="hexo+github搭建成">
-    <meta name="keywords" content="xujiaming 许加明">
+    <meta name="keywords" content="xujiaming 许加明,工厂模式">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="https://avatars2.githubusercontent.com/u/9785339?v=3&amp;s=400">
@@ -61,9 +61,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://mingcode.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2017 | mingCode">
+    <meta property="og:title" content="设计模式-工厂模式 GOF-Factory-Method | mingCode">
     <meta property="og:description" content="hexo+github搭建成">
-    
+    <meta property="og:article:tag" content="工厂模式"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -227,155 +227,241 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#工厂方法模式-（Factory-Method）"><span class="post-toc-number">1.</span> <span class="post-toc-text">工厂方法模式 （Factory Method）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分为三种"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">分为三种</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#普通工厂模式"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">普通工厂模式:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#建立一个工厂类，对实现了同一接口的一些类进行实例的创建。"><span class="post-toc-number">1.0.2.0.1.</span> <span class="post-toc-text">建立一个工厂类，对实现了同一接口的一些类进行实例的创建。</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/05/02/GOF-Factory-Method/">设计模式-工厂模式 GOF-Factory-Method</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/05/02/GOF-Factory-Method/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="xjm's avatar">
-            </div>
-            <div>
-                <strong>xjm</strong>
-                <span>5月 02, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/设计模式/">设计模式</a>, <a class="post_category-link" href="/categories/设计模式/工厂模式/">工厂模式</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/01/05/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/01/05/hello-world/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="xjm's avatar">
-            </div>
-            <div>
-                <strong>xjm</strong>
-                <span>1月 05, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/日常/">日常</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                设计模式-工厂模式 GOF-Factory-Method
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>xjm</strong>
+        <span>5月 02, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZ0lEQVR42u3aUY6sMAwEQO5/6dkDrEBtO0SZUfE10gs8ig/H2/H1+enrwsPDw8PDw8PDO4x3xdft44I1/9c//568Gx4eHt4eXv5C+b35k3vPv/0oeHh4eBt5dwX3ec1dQZ9sEr13w8PDwzuZlxT357t6T8DDw8P7dl4eHzyvOXRjwMPDw1sURuQNdxQcnJa14OHh4cW8/JBp/++t53t4eHh4Aa96JUU8iSGqAweFN8TDw8N7mZcX4jx0WBVwNIfA8PDw8Lbwkng0b8SrIwJJjJtEIXh4eHh7eM+35eX4+WPlgDwsLvzFgIeHh7eU12NUX6h6eJZ87tEBGB4eHt6Alxf06n/ZGymYwPDw8PD28Hpta7J+Vfibfwg8PDy8/bzeZlAd1UoGCKpbER4eHt5OXnUcalVxrwa++agWHh4e3tu8HDM/yppHHlErj4eHh/cyr1fQ80ii0ArHB2bNyQg8PDy8RbzqodQ8rl0VGS/IWvDw8PAGvMmhfvV3tckut+Z4eHh4G3nVIp4X93zIIG/o8fDw8M7hfYIrP/TKC3p1pKCcUuPh4eEt5VUP+9cOB+QNfRSj4OHh4W3nVY+7km0g2WCqb1VoqfHw8PBe41UPnyajV8lG0hw4wMPDw3uZV72SY7BeEDxpr/Hw8PB28hYX5cd7J+sXDF3h4eHhLeX1jruqYUH+r6O2Hg8PD28jb1KgeyU+iS3ybQYPDw/vfF4eT+SRbu+YDQ8PD+/beXnznUcbSduNh4eHt5+XhBH5mjyMyAcO8PDw8M7hrYoVepi8gY6GDPDw8PBe5v3ehYeHh4eHh4eHd8D1B5dl7TlP8oCOAAAAAElFTkSuQmCC">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/工厂模式/">工厂模式</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=设计模式-工厂模式 GOF-Factory-Method&url=http://mingcode.cn//2017/05/02/GOF-Factory-Method/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=设计模式-工厂模式 GOF-Factory-Method&url=http://mingcode.cn//2017/05/02/GOF-Factory-Method/index.html&via=xjm" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://mingcode.cn//2017/05/02/GOF-Factory-Method/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://mingcode.cn//2017/05/02/GOF-Factory-Method/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="工厂方法模式-（Factory-Method）"><a href="#工厂方法模式-（Factory-Method）" class="headerlink" title="工厂方法模式 （Factory Method）"></a>工厂方法模式 （Factory Method）</h1><h3 id="分为三种"><a href="#分为三种" class="headerlink" title="分为三种"></a>分为三种</h3><blockquote>
+<ol>
+<li>普通工厂模式</li>
+<li>多个工厂方法模式</li>
+<li>静态工厂方法模式<h3 id="普通工厂模式"><a href="#普通工厂模式" class="headerlink" title="普通工厂模式:"></a><em>普通工厂模式:</em></h3><h5 id="建立一个工厂类，对实现了同一接口的一些类进行实例的创建。"><a href="#建立一个工厂类，对实现了同一接口的一些类进行实例的创建。" class="headerlink" title="建立一个工厂类，对实现了同一接口的一些类进行实例的创建。"></a>建立一个工厂类，对实现了同一接口的一些类进行实例的创建。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sender</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span><span class="params">()</span></span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/01/05/hello-world/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
