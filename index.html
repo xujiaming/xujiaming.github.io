@@ -23,6 +23,8 @@
     
     
     
+        <link rel="dns-prefetch" href="https://hm.baidu.com"/>
+    
     
     
 
@@ -186,6 +188,16 @@
             document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
             alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
         }
+    </script>
+    
+    <!-- Baidu Analytics -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?14bc3fd5aa612aa4da8fc61996fe6924';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+        })();
     </script>
     
     
