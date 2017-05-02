@@ -1,58 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
-  
-  
-    
-    <entry>
-      <title><![CDATA[设计模式-工厂模式 GOF-Factory-Method]]></title>
-      <url>http://mingcode.cn/2017/05/02/GOF-Factory-Method/</url>
-      <content type="html"><![CDATA[<h1 id="工厂方法模式-（Factory-Method）"><a href="#工厂方法模式-（Factory-Method）" class="headerlink" title="工厂方法模式 （Factory Method）"></a>工厂方法模式 （Factory Method）</h1><h3 id="分为三种"><a href="#分为三种" class="headerlink" title="分为三种"></a>分为三种</h3><blockquote>
-<ol>
-<li>普通工厂模式</li>
-<li>多个工厂方法模式</li>
-<li>静态工厂方法模式<h3 id="普通工厂模式"><a href="#普通工厂模式" class="headerlink" title="普通工厂模式:"></a><em>普通工厂模式:</em></h3><h5 id="建立一个工厂类，对实现了同一接口的一些类进行实例的创建。"><a href="#建立一个工厂类，对实现了同一接口的一些类进行实例的创建。" class="headerlink" title="建立一个工厂类，对实现了同一接口的一些类进行实例的创建。"></a>建立一个工厂类，对实现了同一接口的一些类进行实例的创建。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sender</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span><span class="params">()</span></span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 设计模式 </category>
-            
-            <category> 工厂模式 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 工厂模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>http://mingcode.cn/2017/01/05/hello-world/</url>
-      <content type="html"><![CDATA[<h1 id="上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了"><a href="#上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了" class="headerlink" title="上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了"></a>上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了</h1>]]></content>
-      
-        <categories>
-            
-            <category> 日常 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 默认 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+  <entry>
+    <title><![CDATA[设计模式-工厂模式 GOF-Factory-Method]]></title>
+    <url>%2F2017%2F05%2F02%2FGOF-Factory-Method%2F</url>
+    <content type="text"><![CDATA[工厂方法模式 （Factory Method） 分为三种 普通工厂模式 多个工厂方法模式 静态工厂方法模式 普通工厂模式:建立一个工厂类，对实现了同一接口的一些类进行实例的创建。 123public interface Sender &#123; public void Send(); &#125;]]></content>
+      <categories>
+        <category>设计模式</category>
+        <category>工厂模式</category>
+      </categories>
+      <tags>
+        <tag>工厂模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F01%2F05%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>默认</tag>
+      </tags>
+  </entry>
 </search>
