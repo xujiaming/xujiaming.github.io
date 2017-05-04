@@ -98,7 +98,8 @@ Java研究组织Java设计模式之工厂方法模式
 Java研究组织Java设计模式之工厂方法模式
 工厂方法模式分为三种1. 普通工厂">
 <meta property="og:image" content="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-1.PNG">
-<meta property="og:updated_time" content="2017-05-04T06:33:23.000Z">
+<meta property="og:image" content="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-2.PNG">
+<meta property="og:updated_time" content="2017-05-04T07:31:15.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式-工厂模式 GOF-Factory-Method">
 <meta name="twitter:description" content="工厂方法模式 （Factory Method）工厂方法模式的意义是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类当中。核心工厂类不再负责产品的创建，这样核心类成为一个抽象工厂角色，仅负责具体工厂子类必须实现的接口，这样进一步抽象化的好处是使得工厂方法模式可以使系统在不修改具体工厂角色的情况下引进新的产品。
@@ -442,7 +443,7 @@ Java研究组织Java设计模式之工厂方法模式
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  360
+                  482
                 </span>
               
 
@@ -458,7 +459,7 @@ Java研究组织Java设计模式之工厂方法模式
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -500,6 +501,24 @@ Java研究组织Java设计模式之工厂方法模式
 </li>
 <li><p>创建测试方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryTest</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        SendFactory factory = <span class="keyword">new</span> SendFactory();  </div><div class="line">        Sender sender = factory.produce(<span class="string">"msg"</span>);  </div><div class="line">        sender.Send();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><blockquote>
+<p>输出结果：<code>this is messagesender!</code></p>
+</blockquote>
+</li>
+</ul>
+<h1 id="二，多个工厂方法模式"><a href="#二，多个工厂方法模式" class="headerlink" title="二，多个工厂方法模式"></a>二，多个工厂方法模式</h1><blockquote>
+<p>是对普通工厂方法模式的改进，普通工厂方法模式中，字符串传递容易出错，可以通过多个工厂方法创建对象。参考图如下：</p>
+</blockquote>
+<img src="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-2.PNG" width="450" height="450" title="图1-2 多工厂方法UML设计图">
+<ul>
+<li><p>修改简单工厂模式中的SendFactory</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendFactory</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> Sender <span class="title">producePhone</span><span class="params">()</span></span>&#123;  </div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PhoneSender();  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> Sender <span class="title">produceMessage</span><span class="params">()</span></span>&#123;  </div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MessageSender();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>设计测试类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryTest</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        SendFactory factory = <span class="keyword">new</span> SendFactory();  </div><div class="line">        Sender sender = factory.produceMessage();  </div><div class="line">        sender.Send();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>测试结果</p>
 </li>
 <li><blockquote>
 <p>输出结果：<code>this is messagesender!</code></p>
@@ -686,7 +705,7 @@ Java研究组织Java设计模式之工厂方法模式
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂方法模式-（Factory-Method）"><span class="nav-number">1.</span> <span class="nav-text">工厂方法模式 （Factory Method）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂方法模式分为三种"><span class="nav-number">1.1.</span> <span class="nav-text">工厂方法模式分为三种</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一-普通工厂模式"><span class="nav-number">2.</span> <span class="nav-text">一,普通工厂模式:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂方法模式-（Factory-Method）"><span class="nav-number">1.</span> <span class="nav-text">工厂方法模式 （Factory Method）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂方法模式分为三种"><span class="nav-number">1.1.</span> <span class="nav-text">工厂方法模式分为三种</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一-普通工厂模式"><span class="nav-number">2.</span> <span class="nav-text">一,普通工厂模式:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二，多个工厂方法模式"><span class="nav-number">3.</span> <span class="nav-text">二，多个工厂方法模式</span></a></li></ol></div>
             
 
           </div>
