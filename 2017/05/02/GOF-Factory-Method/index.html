@@ -87,24 +87,18 @@
 
 
 
-<meta name="description" content="工厂方法模式 （Factory Method）工厂方法模式的意义是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类当中。核心工厂类不再负责产品的创建，这样核心类成为一个抽象工厂角色，仅负责具体工厂子类必须实现的接口，这样进一步抽象化的好处是使得工厂方法模式可以使系统在不修改具体工厂角色的情况下引进新的产品。
-Java研究组织Java设计模式之工厂方法模式
-工厂方法模式分为三种1. 普通工厂">
+<meta name="description" content="工厂方法模式 （Factory Method）工厂方法模式的意义是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类当中。核心工厂类不再负责产品的创建，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式-工厂模式 GOF-Factory-Method">
 <meta property="og:url" content="http://mingcode.cn/2017/05/02/GOF-Factory-Method/index.html">
 <meta property="og:site_name" content="mingCode">
-<meta property="og:description" content="工厂方法模式 （Factory Method）工厂方法模式的意义是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类当中。核心工厂类不再负责产品的创建，这样核心类成为一个抽象工厂角色，仅负责具体工厂子类必须实现的接口，这样进一步抽象化的好处是使得工厂方法模式可以使系统在不修改具体工厂角色的情况下引进新的产品。
-Java研究组织Java设计模式之工厂方法模式
-工厂方法模式分为三种1. 普通工厂">
+<meta property="og:description" content="工厂方法模式 （Factory Method）工厂方法模式的意义是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类当中。核心工厂类不再负责产品的创建，">
 <meta property="og:image" content="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-1.PNG">
 <meta property="og:image" content="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-2.PNG">
-<meta property="og:updated_time" content="2017-05-04T08:22:25.000Z">
+<meta property="og:updated_time" content="2017-05-27T14:53:15.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式-工厂模式 GOF-Factory-Method">
-<meta name="twitter:description" content="工厂方法模式 （Factory Method）工厂方法模式的意义是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类当中。核心工厂类不再负责产品的创建，这样核心类成为一个抽象工厂角色，仅负责具体工厂子类必须实现的接口，这样进一步抽象化的好处是使得工厂方法模式可以使系统在不修改具体工厂角色的情况下引进新的产品。
-Java研究组织Java设计模式之工厂方法模式
-工厂方法模式分为三种1. 普通工厂">
+<meta name="twitter:description" content="工厂方法模式 （Factory Method）工厂方法模式的意义是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类当中。核心工厂类不再负责产品的创建，">
 <meta name="twitter:image" content="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-1.PNG">
 
 
@@ -478,13 +472,12 @@ Java研究组织Java设计模式之工厂方法模式
       
 
       
-        <h1 id="工厂方法模式-（Factory-Method）"><a href="#工厂方法模式-（Factory-Method）" class="headerlink" title="工厂方法模式 （Factory Method）"></a>工厂方法模式 （Factory Method）</h1><blockquote><p>工厂方法模式的意义是定义一个创建产品对象的<code>工厂接口</code>，将实际创建工作<code>推迟到子类</code>当中。核心工厂类不再负责产品的创建，这样核心类成为一个<code>抽象工厂</code>角色，仅负责具体工厂子类必须<code>实现</code>的接口，这样进一步抽象化的好处是使得工厂方法模式可以使系统在不修改具体工厂角色的情况下引进新的产品。</p>
+        <h1 id="工厂方法模式-（Factory-Method）"><a href="#工厂方法模式-（Factory-Method）" class="headerlink" title="工厂方法模式 （Factory Method）"></a>工厂方法模式 （Factory Method）</h1><blockquote><p>工厂方法模式的意义是定义一个创建产品对象的<code>工厂接口</code>，将实际创建工作<code>推迟到子类</code>当中。核心工厂类不再负责产品的创建，<a id="more"></a>这样核心类成为一个<code>抽象工厂</code>角色，仅负责具体工厂子类必须<code>实现</code>的接口，这样进一步抽象化的好处是使得工厂方法模式可以使系统在不修改具体工厂角色的情况下引进新的产品。</p>
 <footer><strong>Java研究组织</strong><cite><a href="http://tech.it168.com/a2009/0223/266/000000266400.shtml" target="_blank" rel="external">Java设计模式之工厂方法模式</a></cite></footer></blockquote>
 <h2 id="工厂方法模式分为三种"><a href="#工厂方法模式分为三种" class="headerlink" title="工厂方法模式分为三种"></a>工厂方法模式分为三种</h2><pre><code>1. 普通工厂模式
 2. 多个工厂方法模式
 3. 静态工厂方法模式
-</code></pre><a id="more"></a>
-<h1 id="一-普通工厂模式"><a href="#一-普通工厂模式" class="headerlink" title="一,普通工厂模式:"></a>一,普通工厂模式:</h1><blockquote>
+</code></pre><h1 id="一-普通工厂模式"><a href="#一-普通工厂模式" class="headerlink" title="一,普通工厂模式:"></a>一,普通工厂模式:</h1><blockquote>
 <p>建立一个工厂类，对实现了同一接口的一些类进行实例的创建。<br>设计参考下图：</p>
 </blockquote>
 <img src="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-1.PNG" width="450" height="450" title="图1-1 简单工厂模式UML设计图">
