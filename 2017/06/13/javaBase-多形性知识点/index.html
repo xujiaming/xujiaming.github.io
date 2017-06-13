@@ -87,15 +87,18 @@
 
 
 
+<meta name="description" content="多形性（多态）：“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java基础 多形性(java编程思想)">
+<meta property="og:title" content="java基础 多形性[多态](java编程思想)">
 <meta property="og:url" content="http://mingcode.cn/2017/06/13/javaBase-多形性知识点/index.html">
 <meta property="og:site_name" content="mingCode">
-<meta property="og:image" content="http://www.plantuml.com/plantuml/svg/POr12i9034NtFKMM5d7keFG6Ue4u2KFiD9KcbOBqxbOThEZVvNt-onLZYucX7rBGonX8BECvZ5s-Lx0aPZI34vlluKsUsHrz44sWsF47RaKTX5xtNFsi3y2Jir9n_Qk8BQwg0XDxi_1DlJQtNWYiyAzjNVxE3m00">
-<meta property="og:updated_time" content="2017-06-12T17:30:01.510Z">
+<meta property="og:description" content="多形性（多态）：“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。">
+<meta property="og:image" content="http://www.plantuml.com/plantuml/svg/IquiKh2fqTLLI2mjoS_DJyhCIULA1efPARnOsFDovJODJIw4398e0000">
+<meta property="og:updated_time" content="2017-06-13T17:17:33.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java基础 多形性(java编程思想)">
-<meta name="twitter:image" content="http://www.plantuml.com/plantuml/svg/POr12i9034NtFKMM5d7keFG6Ue4u2KFiD9KcbOBqxbOThEZVvNt-onLZYucX7rBGonX8BECvZ5s-Lx0aPZI34vlluKsUsHrz44sWsF47RaKTX5xtNFsi3y2Jir9n_Qk8BQwg0XDxi_1DlJQtNWYiyAzjNVxE3m00">
+<meta name="twitter:title" content="java基础 多形性[多态](java编程思想)">
+<meta name="twitter:description" content="多形性（多态）：“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。">
+<meta name="twitter:image" content="http://www.plantuml.com/plantuml/svg/IquiKh2fqTLLI2mjoS_DJyhCIULA1efPARnOsFDovJODJIw4398e0000">
 
 
 
@@ -129,7 +132,7 @@
 
 
 
-  <title> java基础 多形性(java编程思想) | mingCode </title>
+  <title> java基础 多形性[多态](java编程思想) | mingCode </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -333,7 +336,7 @@
             
             
               
-                java基础 多形性(java编程思想)
+                java基础 多形性[多态](java编程思想)
               
             
           </h1>
@@ -420,7 +423,7 @@
 
           
           
-             <span id="/2017/06/13/javaBase-多形性知识点/" class="leancloud_visitors" data-flag-title="java基础 多形性(java编程思想)">
+             <span id="/2017/06/13/javaBase-多形性知识点/" class="leancloud_visitors" data-flag-title="java基础 多形性[多态](java编程思想)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -444,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  0
+                  736
                 </span>
               
 
@@ -460,7 +463,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -479,7 +482,17 @@
       
 
       
-        <img src="http://www.plantuml.com/plantuml/svg/POr12i9034NtFKMM5d7keFG6Ue4u2KFiD9KcbOBqxbOThEZVvNt-onLZYucX7rBGonX8BECvZ5s-Lx0aPZI34vlluKsUsHrz44sWsF47RaKTX5xtNFsi3y2Jir9n_Qk8BQwg0XDxi_1DlJQtNWYiyAzjNVxE3m00">
+        <h3 id="多形性多态"><a href="#多形性（多态）：" class="headerlink" title="多形性（多态）："></a>多形性（多态）：</h3><blockquote class="blockquote-center"><pre><br>“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”<br>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与<br>“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建<br>“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成<br>长”。                                                 ——–think in java<br>    </pre><br></blockquote>
+
+<h3 id="1上溯造型"><a href="#1-上溯造型" class="headerlink" title="1.上溯造型"></a>1.上溯造型</h3><p>以一个简单的例子说明，类图如下：<br><img src="http://www.plantuml.com/plantuml/svg/IquiKh2fqTLLI2mjoS_DJyhCIULA1efPARnOsFDovJODJIw4398e0000"><br>在上面的例子中，automobile继承自car，因为继承树的画法是基础类位于最上方，所以称之为上溯造型。我们可以知道automobile是car的子类。所以可以这样定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">car sub = <span class="keyword">new</span> automobile();</div></pre></td></tr></table></figure>
+<p>通过基础类的句柄可以调用子类的方法。</p>
+<p>以下有一个利用上溯造型的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> c07;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Note</span> </span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> value;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="title">Note</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123; value = val; &#125;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Note</div><div class="line">    middleC = <span class="keyword">new</span> Note(<span class="number">0</span>),</div><div class="line">    cSharp = <span class="keyword">new</span> Note(<span class="number">1</span>),</div><div class="line">    cFlat = <span class="keyword">new</span> Note(<span class="number">2</span>);</div><div class="line">&#125; <span class="comment">// Etc.</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Instrument</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">(Note n)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Instrument.play()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Wind objects are instruments</span></div><div class="line"><span class="comment">// because they have the same interface:</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wind</span> <span class="keyword">extends</span> <span class="title">Instrument</span> </span>&#123;</div><div class="line"><span class="comment">// Redefine interface method:</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">(Note n)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Wind.play()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Music</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">tune</span><span class="params">(Instrument i)</span> </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">        i.play(Note.middleC);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Wind flute = <span class="keyword">new</span> Wind();</div><div class="line">        tune(flute); <span class="comment">// Upcasting</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>有一个问题：</strong> 编译器怎样才能知道 Instrument句柄指向的是一个 Wind，而不是一个Brass 或Stringed 呢？</p>
+</blockquote>
+<p>这里就涉及到了方法调用的绑定了，java主要是使用“后期绑定”，后期绑定也叫作“动态绑定”或“运行期绑定”。<br><br>若一种语言实现了后期绑定，同时必须提供一些机制，可在运行期间判断对象的类型，并分别调用适当的方法。也就是说，编译器此时依然不知道对象的类型，但方法调用机制能自己去调查，找到正确的方法主体。不同的语言对后期绑定的实现方法是有所区别的。但我们至少可以这样认为：它们都要在对象中安插某些特殊类型的信息。<br><br>Java 中绑定的所有方法都采用后期绑定技术，除非一个方法已被声明成<code>final</code>。这意味着我们通常不必决定是否应进行后期绑定——它是自动发生的。为什么要把一个方法声明成final 呢？正如上一章指出的那样，它能防止其他人覆盖那个方法。但也许更重要的一点是，<code>它可有效地“关闭”动态绑定</code>，或者告诉编译器不需要进行动态绑定。这样一来，<code>编译器就可为final 方法调用生成效率更高的代码</code>。</p>
 
       
     </div>
@@ -579,8 +592,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/9785339?v=3&s=400"
@@ -641,6 +663,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多形性多态"><span class="nav-number">1.</span> <span class="nav-text">多形性（多态）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1上溯造型"><span class="nav-number">2.</span> <span class="nav-text">1.上溯造型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

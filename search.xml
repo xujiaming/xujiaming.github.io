@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[java基础 多形性(java编程思想)]]></title>
+    <title><![CDATA[java基础 多形性[多态](java编程思想)]]></title>
     <url>%2F2017%2F06%2F13%2FjavaBase-%E5%A4%9A%E5%BD%A2%E6%80%A7%E7%9F%A5%E8%AF%86%E7%82%B9%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[多形性（多态）：“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。 ——–think in java 1.上溯造型以一个简单的例子说明，类图如下：在上面的例子中，automobile继承自car，因为继承树的画法是基础类位于最上方，所以称之为上溯造型。我们可以知道automobile是car的子类。所以可以这样定义 1car sub = new automobile(); 通过基础类的句柄可以调用子类的方法。 以下有一个利用上溯造型的例子 1234567891011121314151617181920212223242526272829303132package c07;class Note &#123;private int value;private Note(int val) &#123; value = val; &#125;public static final Note middleC = new Note(0), cSharp = new Note(1), cFlat = new Note(2);&#125; // Etc.class Instrument &#123; public void play(Note n) &#123; System.out.println("Instrument.play()"); &#125;&#125;// Wind objects are instruments// because they have the same interface:class Wind extends Instrument &#123;// Redefine interface method: public void play(Note n) &#123; System.out.println("Wind.play()"); &#125;&#125;public class Music &#123; public static void tune(Instrument i) &#123; // ... i.play(Note.middleC); &#125; public static void main(String[] args) &#123; Wind flute = new Wind(); tune(flute); // Upcasting &#125;&#125; 有一个问题： 编译器怎样才能知道 Instrument句柄指向的是一个 Wind，而不是一个Brass 或Stringed 呢？ 这里就涉及到了方法调用的绑定了，java主要是使用“后期绑定”，后期绑定也叫作“动态绑定”或“运行期绑定”。若一种语言实现了后期绑定，同时必须提供一些机制，可在运行期间判断对象的类型，并分别调用适当的方法。也就是说，编译器此时依然不知道对象的类型，但方法调用机制能自己去调查，找到正确的方法主体。不同的语言对后期绑定的实现方法是有所区别的。但我们至少可以这样认为：它们都要在对象中安插某些特殊类型的信息。Java 中绑定的所有方法都采用后期绑定技术，除非一个方法已被声明成final。这意味着我们通常不必决定是否应进行后期绑定——它是自动发生的。为什么要把一个方法声明成final 呢？正如上一章指出的那样，它能防止其他人覆盖那个方法。但也许更重要的一点是，它可有效地“关闭”动态绑定，或者告诉编译器不需要进行动态绑定。这样一来，编译器就可为final 方法调用生成效率更高的代码。]]></content>
       <categories>
         <category>java</category>
         <category>基础</category>
