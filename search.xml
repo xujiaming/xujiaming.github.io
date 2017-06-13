@@ -1,57 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
-  <entry>
-    <title><![CDATA[java基础 多形性[多态](java编程思想)]]></title>
-    <url>%2F2017%2F06%2F13%2FjavaBase-%E5%A4%9A%E5%BD%A2%E6%80%A7%E7%9F%A5%E8%AF%86%E7%82%B9%2F</url>
-    <content type="text"><![CDATA[多形性（多态）：“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。 ——–think in java 1.上溯造型以一个简单的例子说明，类图如下：在上面的例子中，automobile继承自car，因为继承树的画法是基础类位于最上方，所以称之为上溯造型。我们可以知道automobile是car的子类。所以可以这样定义 1car sub = new automobile(); 通过基础类的句柄可以调用子类的方法。 以下有一个利用上溯造型的例子 1234567891011121314151617181920212223242526272829303132package c07;class Note &#123;private int value;private Note(int val) &#123; value = val; &#125;public static final Note middleC = new Note(0), cSharp = new Note(1), cFlat = new Note(2);&#125; // Etc.class Instrument &#123; public void play(Note n) &#123; System.out.println("Instrument.play()"); &#125;&#125;// Wind objects are instruments// because they have the same interface:class Wind extends Instrument &#123;// Redefine interface method: public void play(Note n) &#123; System.out.println("Wind.play()"); &#125;&#125;public class Music &#123; public static void tune(Instrument i) &#123; // ... i.play(Note.middleC); &#125; public static void main(String[] args) &#123; Wind flute = new Wind(); tune(flute); // Upcasting &#125;&#125; 有一个问题： 编译器怎样才能知道 Instrument句柄指向的是一个 Wind，而不是一个Brass 或Stringed 呢？ 这里就涉及到了方法调用的绑定了，java主要是使用“后期绑定”，后期绑定也叫作“动态绑定”或“运行期绑定”。若一种语言实现了后期绑定，同时必须提供一些机制，可在运行期间判断对象的类型，并分别调用适当的方法。也就是说，编译器此时依然不知道对象的类型，但方法调用机制能自己去调查，找到正确的方法主体。不同的语言对后期绑定的实现方法是有所区别的。但我们至少可以这样认为：它们都要在对象中安插某些特殊类型的信息。Java 中绑定的所有方法都采用后期绑定技术，除非一个方法已被声明成final。这意味着我们通常不必决定是否应进行后期绑定——它是自动发生的。为什么要把一个方法声明成final 呢？正如上一章指出的那样，它能防止其他人覆盖那个方法。但也许更重要的一点是，它可有效地“关闭”动态绑定，或者告诉编译器不需要进行动态绑定。这样一来，编译器就可为final 方法调用生成效率更高的代码。]]></content>
-      <categories>
-        <category>java</category>
-        <category>基础</category>
-        <category>多形性</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[java基础 类再生(java编程思想)]]></title>
-    <url>%2F2017%2F05%2F27%2FjavaBase-%E7%B1%BB%E5%86%8D%E7%94%9F%E7%9F%A5%E8%AF%86%E7%82%B9%2F</url>
-    <content type="text"><![CDATA[1 .关于合成与继承 合成：合成只需在新类里简单地置入对象句柄即可，更加灵活，对象会被置null值，基础数据类型置0或者false。 继承：在新类后面使用关键字extends加上一个基础类，则可完成继承，新类可以继承基础类的所有非private变量和方法。 一般合成与继承两种技术结合起来使用 只有在清楚知道继承在所有方法中最有效的前提下，才可考虑继承。为判断自己到底应该选用合成还是继承，一个最简单的办法就是考虑是否需要从新类上溯造型回基础类。若必须上溯，就需要继承。但如果不需要上溯造型，就应提醒自己防止继承的滥用。 2 .final关键字 final数据：（1）编译期常数，它永远不会改变，对于编译期的常数，编译器（程序）可将常数值“封装”到需要的计算过程里。也就是说，计算可在编译期间提前执行，从而节省运行时的一些开销。在Java中，这些形式的常数必须属于基本数据类型。无论static还是final字段，都只能存储一个数据，而且不得改变。（2）但对于对象句柄，final会将句柄变成一个常数。进行声明时，必须将句柄初始化到一个具体的对象。而且永远不能将句柄变成指向另一个对象。然而，对象本身是可以修改的。 空白final：允许我们创建“空白final”，它们属于一些特殊的字段。尽管被声明成final，但却未得到一个初始值。无论在哪种情况下，空白final都必须在实际使用前得到正确的初始化。而且编译器会主动保证这一规定得以贯彻。 final自变量：允许我们将自变量设成final属性，方法是在自变量列表中对它们进行适当的声明。这意味着在一个方法的内部，我们不能改变自变量句柄指向的东西。如下： 12345678void with(final Gizmo g) &#123; //! g = new Gizmo(); // Illegal g is final g.spin();&#125;void without(Gizmo g) &#123; g = new Gizmo(); // OK g not final g.spin();&#125; final方法：第一个是为方法“上锁”，防止任何继承类改变它的本来含义。第二是为程序执行的效率[p155]类内所有 private 方法都自动成为 final 。 final 类：整个类都是final（在它的定义前冠以 final 关键字），就表明自己不希望从这个类继承，或者不允许其他任何人采取这种操作。 3 .继承初始化先看代码 1234567891011121314151617181920212223242526272829class Insect &#123; int i = 9; int j; Insect() &#123; prt("i = " + i + ", j = " + j); j = 39; &#125; static int x1 = prt("static Insect.x1 initialized"); static int prt(String s) &#123; System.out.println(s); return 47; &#125;&#125;public class Beetle extends Insect &#123; int k = prt("Beetle.k initialized"); Beetle() &#123; prt("k = " + k); prt("j = " + j); &#125; static int x2 =prt("static Beetle.x2 initialized"); static int prt(String s) &#123; System.out.println(s); return 63; &#125; public static void main(String[] args) &#123; prt("Beetle constructor"); Beetle b = new Beetle(); &#125;&#125; 在看结果 static Insect.x initialized static Beetle.x initialized Beetle constructor i = 9, j = 0 Beetle.k initialized k = 63 j = 39 父类静态变量（静态代码块，静态成员变量）–&gt; 子类静态变量（静态代码块，静态成员变量）–&gt;父类成员变量–&gt;子类成员变量–&gt;main函数–&gt;父类构造器–&gt;子类构造器]]></content>
-      <categories>
-        <category>java</category>
-        <category>基础</category>
-        <category>类再生</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[设计模式-工厂模式 GOF-Factory-Method]]></title>
-    <url>%2F2017%2F05%2F02%2FGOF-Factory-Method%2F</url>
-    <content type="text"><![CDATA[工厂方法模式 （Factory Method）工厂方法模式的意义是定义一个创建产品对象的工厂接口，将实际创建工作推迟到子类当中。核心工厂类不再负责产品的创建，这样核心类成为一个抽象工厂角色，仅负责具体工厂子类必须实现的接口，这样进一步抽象化的好处是使得工厂方法模式可以使系统在不修改具体工厂角色的情况下引进新的产品。 Java研究组织Java设计模式之工厂方法模式 工厂方法模式分为三种1. 普通工厂模式 2. 多个工厂方法模式 3. 静态工厂方法模式 一,普通工厂模式: 建立一个工厂类，对实现了同一接口的一些类进行实例的创建。设计参考下图： 创建Sender接口 123public interface Sender &#123; public void Send(); &#125; 分别实现两个接口的类 123456 public class PhoneSender implements Sender &#123; @Override public void Send() &#123; System.out.println("this is phonesender!"); &#125; &#125; 123456 public class MessageSender implements Sender &#123; @Override public void Send() &#123; System.out.println("this is messagesender!"); &#125; &#125; 然后创建工厂类 123456789101112public class SendFactory &#123; public Sender produce(String type) &#123; if ("phone".equals(type)) &#123; return new MailSender(); &#125; else if ("msg".equals(type)) &#123; return new SmsSender(); &#125; else &#123; System.out.println("请输入正确的类型!"); return null; &#125; &#125; &#125; 创建测试方法 1234567 public class FactoryTest &#123; public static void main(String[] args) &#123; SendFactory factory = new SendFactory(); Sender sender = factory.produce("msg"); sender.Send(); &#125; &#125; 输出结果：this is messagesender! 二，多个工厂方法模式 是对普通工厂方法模式的改进，普通工厂方法模式中，字符串传递容易出错，可以通过多个工厂方法创建对象。参考图如下： 修改简单工厂模式中的SendFactory 12345678public class SendFactory &#123; public Sender producePhone()&#123; return new PhoneSender(); &#125; public Sender produceMessage()&#123; return new MessageSender(); &#125; &#125; 设计测试类 1234567public class FactoryTest &#123; public static void main(String[] args) &#123; SendFactory factory = new SendFactory(); Sender sender = factory.produceMessage(); sender.Send(); &#125; &#125; 测试结果 输出结果：this is messagesender!]]></content>
-      <categories>
-        <category>设计模式</category>
-        <category>工厂模式</category>
-      </categories>
-      <tags>
-        <tag>工厂模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[404]]></title>
-    <url>%2F2017%2F01%2F05%2F%2F404%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F01%2F05%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>默认</tag>
-      </tags>
-  </entry>
+  
+  
+    
+    <entry>
+      <title><![CDATA[java基础 多形性[多态](java编程思想)]]></title>
+      <url>http://mingcode.cn/2017/06/13/javaBase-%E5%A4%9A%E5%BD%A2%E6%80%A7%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+      <content type="html"><![CDATA[<h3 id="多形性多态"><a href="#多形性（多态）：" class="headerlink" title="多形性（多态）："></a>多形性（多态）：</h3><p><blockquote class="blockquote-center"><pre><br>“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”<br>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与<br>“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建<br>“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成<br>长”。                                                 ——–think in java<br>    </pre><br></blockquote><br><a id="more"></a></p>
+<h3 id="1上溯造型"><a href="#1-上溯造型" class="headerlink" title="1.上溯造型"></a>1.上溯造型</h3><p>以一个简单的例子说明，类图如下：<br><img src="http://www.plantuml.com/plantuml/svg/IquiKh2fqTLLI2mjoS_DJyhCIULA1efPARnOsFDovJODJIw4398e0000"><br>在上面的例子中，automobile继承自car，因为继承树的画法是基础类位于最上方，所以称之为上溯造型。我们可以知道automobile是car的子类。所以可以这样定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">car sub = <span class="keyword">new</span> automobile();</div></pre></td></tr></table></figure>
+<p>通过基础类的句柄可以调用子类的方法。</p>
+<p>以下有一个利用上溯造型的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> c07;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Note</span> </span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> value;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="title">Note</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123; value = val; &#125;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Note</div><div class="line">    middleC = <span class="keyword">new</span> Note(<span class="number">0</span>),</div><div class="line">    cSharp = <span class="keyword">new</span> Note(<span class="number">1</span>),</div><div class="line">    cFlat = <span class="keyword">new</span> Note(<span class="number">2</span>);</div><div class="line">&#125; <span class="comment">// Etc.</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Instrument</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">(Note n)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Instrument.play()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Wind objects are instruments</span></div><div class="line"><span class="comment">// because they have the same interface:</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wind</span> <span class="keyword">extends</span> <span class="title">Instrument</span> </span>&#123;</div><div class="line"><span class="comment">// Redefine interface method:</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">(Note n)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Wind.play()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Music</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">tune</span><span class="params">(Instrument i)</span> </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">        i.play(Note.middleC);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Wind flute = <span class="keyword">new</span> Wind();</div><div class="line">        tune(flute); <span class="comment">// Upcasting</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>有一个问题：</strong> 编译器怎样才能知道 Instrument句柄指向的是一个 Wind，而不是一个Brass 或Stringed 呢？</p>
+</blockquote>
+<p>这里就涉及到了方法调用的绑定了，java主要是使用“后期绑定”，后期绑定也叫作“动态绑定”或“运行期绑定”。<br><br>若一种语言实现了后期绑定，同时必须提供一些机制，可在运行期间判断对象的类型，并分别调用适当的方法。也就是说，编译器此时依然不知道对象的类型，但方法调用机制能自己去调查，找到正确的方法主体。不同的语言对后期绑定的实现方法是有所区别的。但我们至少可以这样认为：它们都要在对象中安插某些特殊类型的信息。<br><br>Java 中绑定的所有方法都采用后期绑定技术，除非一个方法已被声明成<code>final</code>。这意味着我们通常不必决定是否应进行后期绑定——它是自动发生的。为什么要把一个方法声明成final 呢？正如上一章指出的那样，它能防止其他人覆盖那个方法。但也许更重要的一点是，<code>它可有效地“关闭”动态绑定</code>，或者告诉编译器不需要进行动态绑定。这样一来，<code>编译器就可为final 方法调用生成效率更高的代码</code>。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+            <category> 基础 </category>
+            
+            <category> 多形性 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[java基础 类再生(java编程思想)]]></title>
+      <url>http://mingcode.cn/2017/05/27/javaBase-%E7%B1%BB%E5%86%8D%E7%94%9F%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+      <content type="html"><![CDATA[<blockquote>
+<h3 id="1-关于合成与继承"><a href="#1-关于合成与继承" class="headerlink" title="1 .关于合成与继承"></a>1 .关于合成与继承</h3></blockquote>
+<ul>
+<li><p>合成：合成只需在新类里简单地置入对象句柄即可，更加灵活，对象会被置null值，基础数据类型置0或者false。</p>
+</li>
+<li><p>继承：在新类后面使用关键字extends加上一个基础类，则可完成继承，新类可以继承基础类的所有非private变量和方法。</p>
+<a id="more"></a>
+</li>
+<li><p>一般合成与继承两种技术结合起来使用</p>
+</li>
+<li><p>只有在清楚知道继承在所有方法中最有效的前提下，才可考虑继承。为判断自己到底应该选用合成还是继承，一个最简单的办法就是考虑是否需要从新类上溯造型回基础类。若必须上溯，就需要继承。但如果不需要上溯造型，就应提醒自己防止继承的滥用。</p>
+</li>
+</ul>
+<blockquote>
+<h3 id="2-final关键字"><a href="#2-final关键字" class="headerlink" title="2 .final关键字"></a>2 .final关键字</h3></blockquote>
+<h4 id="final数据"><a href="#final数据：" class="headerlink" title="final数据："></a>final数据：</h4><p>（1）编译期常数，它永远不会改变，对于编译期的常数，编译器（程序）可将常数值“封装”到需要的计算过程里。也就是说，计算可在编译期间提前执行，从而节省运行时的一些开销。在Java中，这些形式的常数必须属于基本数据类型。无论static还是final字段，都只能存储一个数据，而且不得改变。（2）但对于对象句柄，final会将句柄变成一个常数。进行声明时，必须将句柄初始化到一个具体的对象。而且永远不能将句柄变成指向另一个对象。然而，对象本身是可以修改的。</p>
+<ul>
+<li><ol>
+<li>空白final：允许我们创建“空白final”，它们属于一些特殊的字段。尽管被声明成final，但却未得到一个初始值。无论在哪种情况下，空白final都必须在实际使用前得到正确的初始化。而且编译器会主动保证这一规定得以贯彻。</li>
+</ol>
+</li>
+<li><ol>
+<li>final自变量：允许我们将自变量设成final属性，方法是在自变量列表中对它们进行适当的声明。这意味着在一个方法的内部，我们不能改变自变量句柄指向的东西。如下：  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">with</span><span class="params">(<span class="keyword">final</span> Gizmo g)</span> </span>&#123;</div><div class="line">    <span class="comment">//! g = new Gizmo(); // Illegal g is final</span></div><div class="line">    g.spin();</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">without</span><span class="params">(Gizmo g)</span> </span>&#123;</div><div class="line">    g = <span class="keyword">new</span> Gizmo(); <span class="comment">// OK g not final</span></div><div class="line">    g.spin();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="final方法"><a href="#final方法：" class="headerlink" title="final方法："></a>final方法：</h4><p>第一个是为方法“上锁”，防止任何继承类改变它的本来含义。第二是为程序执行的效率<code>[p155]</code>类内所有 private 方法都自动成为 final 。</p>
+<h4 id="final-类"><a href="#final-类：" class="headerlink" title="final 类："></a>final 类：</h4><p>整个类都是final（在它的定义前冠以 final 关键字），就表明自己不希望从这个类继承，或者不允许其他任何人采取这种操作。</p>
+<blockquote>
+<h3 id="3-继承初始化"><a href="#3-继承初始化" class="headerlink" title="3 .继承初始化"></a>3 .继承初始化</h3><p>先看代码</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Insect</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">9</span>;</div><div class="line">    <span class="keyword">int</span> j;</div><div class="line">    Insect() &#123;</div><div class="line">        prt(<span class="string">"i = "</span> + i + <span class="string">", j = "</span> + j);</div><div class="line">        j = <span class="number">39</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> x1 = prt(<span class="string">"static Insect.x1 initialized"</span>);</div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">prt</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        System.out.println(s);</div><div class="line">        <span class="keyword">return</span> <span class="number">47</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Beetle</span> <span class="keyword">extends</span> <span class="title">Insect</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> k = prt(<span class="string">"Beetle.k initialized"</span>);</div><div class="line">    Beetle() &#123;</div><div class="line">        prt(<span class="string">"k = "</span> + k);</div><div class="line">        prt(<span class="string">"j = "</span> + j);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> x2 =prt(<span class="string">"static Beetle.x2 initialized"</span>);</div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">prt</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        System.out.println(s);</div><div class="line">        <span class="keyword">return</span> <span class="number">63</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        prt(<span class="string">"Beetle constructor"</span>);</div><div class="line">        Beetle b = <span class="keyword">new</span> Beetle();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在看结果</p>
+<pre><code>static Insect.x initialized
+static Beetle.x initialized
+Beetle constructor
+i = 9, j = 0
+Beetle.k initialized
+k = 63
+j = 39
+</code></pre><blockquote>
+<blockquote>
+<p>父类静态变量（静态代码块，静态成员变量）–&gt; 子类静态变量（静态代码块，静态成员变量）–&gt;父类成员变量–&gt;子类成员变量–&gt;main函数–&gt;父类构造器–&gt;子类构造器</p>
+</blockquote>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> java </category>
+            
+            <category> 基础 </category>
+            
+            <category> 类再生 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[设计模式-工厂模式 GOF-Factory-Method]]></title>
+      <url>http://mingcode.cn/2017/05/02/GOF-Factory-Method/</url>
+      <content type="html"><![CDATA[<h1 id="工厂方法模式-factory-method"><a href="#工厂方法模式-（Factory-Method）" class="headerlink" title="工厂方法模式 （Factory Method）"></a>工厂方法模式 （Factory Method）</h1><blockquote><p>工厂方法模式的意义是定义一个创建产品对象的<code>工厂接口</code>，将实际创建工作<code>推迟到子类</code>当中。核心工厂类不再负责产品的创建，<a id="more"></a>这样核心类成为一个<code>抽象工厂</code>角色，仅负责具体工厂子类必须<code>实现</code>的接口，这样进一步抽象化的好处是使得工厂方法模式可以使系统在不修改具体工厂角色的情况下引进新的产品。</p>
+<footer><strong>Java研究组织</strong><cite><a href="http://tech.it168.com/a2009/0223/266/000000266400.shtml" target="_blank" rel="external">Java设计模式之工厂方法模式</a></cite></footer></blockquote>
+<h2 id="工厂方法模式分为三种"><a href="#工厂方法模式分为三种" class="headerlink" title="工厂方法模式分为三种"></a>工厂方法模式分为三种</h2><pre><code>1. 普通工厂模式
+2. 多个工厂方法模式
+3. 静态工厂方法模式
+</code></pre><h1 id="一普通工厂模式"><a href="#一-普通工厂模式" class="headerlink" title="一,普通工厂模式:"></a>一,普通工厂模式:</h1><blockquote>
+<p>建立一个工厂类，对实现了同一接口的一些类进行实例的创建。<br>设计参考下图：</p>
+</blockquote>
+<img src="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-1.PNG" width="450" height="450" title="图1-1 简单工厂模式UML设计图">
+<ul>
+<li><p>创建Sender接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sender</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span><span class="params">()</span></span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>分别实现两个接口的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneSender</span> <span class="keyword">implements</span> <span class="title">Sender</span> </span>&#123;  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"this is phonesender!"</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageSender</span> <span class="keyword">implements</span> <span class="title">Sender</span> </span>&#123;  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"this is messagesender!"</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后创建工厂类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendFactory</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> Sender <span class="title">produce</span><span class="params">(String type)</span> </span>&#123;  </div><div class="line">        <span class="keyword">if</span> (<span class="string">"phone"</span>.equals(type)) &#123;  </div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MailSender();  </div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"msg"</span>.equals(type)) &#123;  </div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SmsSender();  </div><div class="line">        &#125; <span class="keyword">else</span> &#123;  </div><div class="line">            System.out.println(<span class="string">"请输入正确的类型!"</span>);  </div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建测试方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryTest</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        SendFactory factory = <span class="keyword">new</span> SendFactory();  </div><div class="line">        Sender sender = factory.produce(<span class="string">"msg"</span>);  </div><div class="line">        sender.Send();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><blockquote>
+<p>输出结果：<code>this is messagesender!</code></p>
+</blockquote>
+</li>
+</ul>
+<h1 id="二多个工厂方法模式"><a href="#二，多个工厂方法模式" class="headerlink" title="二，多个工厂方法模式"></a>二，多个工厂方法模式</h1><blockquote>
+<p>是对普通工厂方法模式的改进，普通工厂方法模式中，字符串传递容易出错，可以通过多个工厂方法创建对象。参考图如下：</p>
+</blockquote>
+<img src="http://opdy5wv5e.bkt.clouddn.com/GOF/1/GOF-2.PNG" width="450" height="450" title="图1-2 多工厂方法UML设计图">
+<ul>
+<li><p>修改简单工厂模式中的SendFactory</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendFactory</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> Sender <span class="title">producePhone</span><span class="params">()</span></span>&#123;  </div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PhoneSender();  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> Sender <span class="title">produceMessage</span><span class="params">()</span></span>&#123;  </div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MessageSender();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>设计测试类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryTest</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        SendFactory factory = <span class="keyword">new</span> SendFactory();  </div><div class="line">        Sender sender = factory.produceMessage();  </div><div class="line">        sender.Send();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>测试结果</p>
+</li>
+<li><blockquote>
+<p>输出结果：<code>this is messagesender!</code></p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+            <category> 工厂模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 工厂模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[404]]></title>
+      <url>http://mingcode.cn/2017/01/05//404/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>http://mingcode.cn/2017/01/05/hello-world/</url>
+      <content type="html"><![CDATA[<blockquote class="blockquote-center"><h1 id="上次服务器加wp的崩溃后现在终于又有了以后要写些东西了"><a href="#上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了" class="headerlink" title="上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了"></a>上次服务器加wp的崩溃后，现在终于又有了，以后要写些东西了</h1></blockquote>]]></content>
+      
+        <categories>
+            
+            <category> 日常 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 默认 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
 </search>

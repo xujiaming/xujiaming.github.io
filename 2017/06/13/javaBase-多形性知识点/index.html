@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="mingCode">
 <meta property="og:description" content="多形性（多态）：“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。">
 <meta property="og:image" content="http://www.plantuml.com/plantuml/svg/IquiKh2fqTLLI2mjoS_DJyhCIULA1efPARnOsFDovJODJIw4398e0000">
-<meta property="og:updated_time" content="2017-06-13T17:17:33.109Z">
+<meta property="og:updated_time" content="2017-06-13T17:19:59.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java基础 多形性[多态](java编程思想)">
 <meta name="twitter:description" content="多形性（多态）：“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。">
@@ -482,8 +482,7 @@
       
 
       
-        <h3 id="多形性多态"><a href="#多形性（多态）：" class="headerlink" title="多形性（多态）："></a>多形性（多态）：</h3><blockquote class="blockquote-center"><pre><br>“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”<br>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与<br>“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建<br>“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成<br>长”。                                                 ——–think in java<br>    </pre><br></blockquote>
-
+        <h3 id="多形性多态"><a href="#多形性（多态）：" class="headerlink" title="多形性（多态）："></a>多形性（多态）：</h3><p><blockquote class="blockquote-center"><pre><br>“对于面向对象的程序设计语言，多型性是第三种最基本的特征（前两种是数据抽象和继承。)”<br>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与<br>“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建<br>“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成<br>长”。                                                 ——–think in java<br>    </pre><br></blockquote><br><a id="more"></a></p>
 <h3 id="1上溯造型"><a href="#1-上溯造型" class="headerlink" title="1.上溯造型"></a>1.上溯造型</h3><p>以一个简单的例子说明，类图如下：<br><img src="http://www.plantuml.com/plantuml/svg/IquiKh2fqTLLI2mjoS_DJyhCIULA1efPARnOsFDovJODJIw4398e0000"><br>在上面的例子中，automobile继承自car，因为继承树的画法是基础类位于最上方，所以称之为上溯造型。我们可以知道automobile是car的子类。所以可以这样定义</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">car sub = <span class="keyword">new</span> automobile();</div></pre></td></tr></table></figure>
 <p>通过基础类的句柄可以调用子类的方法。</p>
