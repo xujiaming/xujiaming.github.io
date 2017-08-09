@@ -1,0 +1,1162 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javaee spring 学习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/9785339?v=3&s=400?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="介绍Spring是一个开源框架，最早由Rod Johnson创建，并在《Expert One-on-One：J2EE Design andDevelopment》地址  这本著作中进行了介绍。Spring可以做很多事情，它为企业级开发提供给了丰富的功能，但是这些功能的底层都依赖于它的两个核心特性，也就是依赖注入（dependency injection，DI）和面向切面编程（aspect-orie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring学习 概述 (spring in action 4th)">
+<meta property="og:url" content="http://mingcode.cn/2017/07/14/javaEE-SpringStudy-spring概述/index.html">
+<meta property="og:site_name" content="mingCode">
+<meta property="og:description" content="介绍Spring是一个开源框架，最早由Rod Johnson创建，并在《Expert One-on-One：J2EE Design andDevelopment》地址  这本著作中进行了介绍。Spring可以做很多事情，它为企业级开发提供给了丰富的功能，但是这些功能的底层都依赖于它的两个核心特性，也就是依赖注入（dependency injection，DI）和面向切面编程（aspect-orie">
+<meta property="og:updated_time" content="2017-07-20T15:47:38.305Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring学习 概述 (spring in action 4th)">
+<meta name="twitter:description" content="介绍Spring是一个开源框架，最早由Rod Johnson创建，并在《Expert One-on-One：J2EE Design andDevelopment》地址  这本著作中进行了介绍。Spring可以做很多事情，它为企业级开发提供给了丰富的功能，但是这些功能的底层都依赖于它的两个核心特性，也就是依赖注入（dependency injection，DI）和面向切面编程（aspect-orie">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://mingcode.cn/2017/07/14/javaEE-SpringStudy-spring概述/"/>
+
+
+
+
+
+  <title> spring学习 概述 (spring in action 4th) | mingCode </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?14bc3fd5aa612aa4da8fc61996fe6924";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mingCode</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">临事而惧，好谋而成。在艰难中摸索......</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/07/14/javaEE-SpringStudy-spring概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SkyMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9785339?v=3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mingCode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                spring学习 概述 (spring in action 4th)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T14:08:31+08:00">
+                2017-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaee/" itemprop="url" rel="index">
+                    <span itemprop="name">javaee</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaee/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaee/spring/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/07/14/javaEE-SpringStudy-spring概述/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/14/javaEE-SpringStudy-spring概述/" class="leancloud_visitors" data-flag-title="spring学习 概述 (spring in action 4th)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,742
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Spring是一个开源框架，最早由Rod Johnson创建，并在《Expert One-on-One：J2EE Design andDevelopment》<br><a href="http://amzn.com/076454385" target="_blank" rel="external">地址</a>  这本著作中进行了介绍。Spring可以做很多事情，它为企业级开发提供给了丰富的功能，但是这些功能的底层都依赖<br>于它的两个核心特性，也就是<strong>依赖注入</strong>（dependency injection，<strong>DI</strong>）和<strong>面向切面编程</strong>（aspect-oriented programming，<strong>AOP</strong>）。</p>
+<p></p><p>为了降低Java开发的复杂性，Spring采取了以下4种关键策略：</p>
+<ol>
+<li>基于POJO的轻量级和最小侵入性编程；</li>
+<li>通过依赖注入和面向接口实现松耦合；</li>
+<li>基于切面和惯例进行声明式编程；</li>
+<li>通过切面和模板减少样板式代码</li>
+</ol>
+<p>Spring竭力避免因自身的API而弄乱你的应用代码。Spring不会强迫你实现Spring规范的接口<br>或继承Spring规范的类，相反，在基于Spring构建的应用中，它的类通常没有任何痕迹表明<br>你使用了Spring。</p>
+<h3 id="控制反转inversion-of-control"><a href="#控制反转-Inversion-of-Control" class="headerlink" title="控制反转(Inversion of Control)"></a>控制反转(Inversion of Control)</h3><p>控制反转即IoC (Inversion of Control)，它把传统上由程序代码直接操控的对象的调用权交给容器，通过容器来实现对象组件的装配和管理。所谓的“控制反转”概念就是对组件对象控制权的转移，从程序代码本身转移到了外部容器。</p>
+<p>IoC是一个很大的概念，可以用不同的方式来实现。其主要实现方式有两种：<1>依赖查找（Dependency Lookup）：容器提供回调接口和上下文环境给组件。<2>依赖注入（Dependency Injection）：组件不做定位查询，只提供普通的Java方法让容器去决定依赖关系。</2></1></p>
+<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><p>如果在 Class A 中，有 Class B 的实例，则称 Class A 对 Class B 有一个依赖。例如下面类 Human 中用到一个 Father 对象，我们就说类 Human 对类 Father 有一个依赖。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    Father father;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Human</span><span class="params">()</span> </span>&#123;</div><div class="line">        father = <span class="keyword">new</span> Father();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>如果现在要改变 father 生成方式，如需要用new Father(String name)初始化 father，需要修改 Human 代码；</li>
+<li>如果想测试不同 Father 对象对 Human 的影响很困难，因为 father 的初始化被写死在了 Human 的构造函数中；</li>
+<li>如果new Father()过程非常缓慢，单测时我们希望用已经初始化好的 father 对象 Mock 掉这个过程也很困难。</li>
+</ol>
+<h4 id="依赖注入"><a href="#依赖注入-1" class="headerlink" title="依赖注入"></a>依赖注入</h4><p>上面将依赖在构造函数中直接初始化是一种 Hard init 方式，弊端在于两个类不够独立，不方便测试。我们还有另外一种 Init 方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    Father father;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Human</span><span class="params">(Father father)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.father = father;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中，我们将 father 对象作为构造函数的一个参数传入。在调用 Human 的构造方法之前外部就已经初始化好了 Father 对象。像这种<strong>非自己主动初始化依赖，而通过外部来传入依赖的方式，我们就称为依赖注入</strong>。</p>
+<p>现在我们发现上面 1 中存在的两个问题都很好解决了，简单的说依赖注入主要有两个好处：(1). 解耦，将依赖之间解耦。(2). 因为已经解耦，所以方便做单元测试，尤其是 Mock 测试。</p>
+<p>有接口注入（Interface Injection），设值注入（Setter Injection）和构造子注入（Constructor Injection）三种方式</p>
+<p>在spring中可以通过xml文件，注解和java文件进行实现。</p>
+<p>依赖注入优点：<1>查找定位操作与应用代码完全无关。<2>不依赖于容器的API，可以很容易地在任何容器以外使用应用对象。<3>不需要特殊的接口，绝大多数对象可以做到完全不必依赖容器。</3></2></1></p>
+<h3 id="应用切面"><a href="#应用切面" class="headerlink" title="应用切面"></a>应用切面</h3><p>动态地将代码切入到类的指定方法、指定位置上的编程思想就是面向切面的编程。DI能够让相互协作的软件组件保持松散耦合，而面向切面编程（aspect-orientedprogramming，AOP）允许你把遍布应用各处的功能分离出来形成可重用的组件。</p>
+<h3 id="spring容器containerp38"><a href="#Spring容器（container）P38" class="headerlink" title="Spring容器（container）P38"></a>Spring容器（container）<em>P38</em></h3><p>在基于Spring的应用中，你的应用对象生存于Spring容器（container）中。如图1.4所示，Spring容器负责创建对象，装配它们，配置它们并管理它们的整个生命周期，从生存到死亡（在这里，可能就是new到finalize()）。</p>
+<p>Spring容器并不是只有一个。Spring自带了多个容器实现，可以归为两种不同的类型。<strong>bean工厂（由org.springframework. beans. factory.eanFactory接口定义）是最简单的容器</strong>，提供基本的DI支持。<strong>应用上下文（由org.springframework.context.ApplicationContext接口定义）基于BeanFactory构建</strong>，并提供应用框架级别的服务，例如从属性文件解析文本信息以及发布应用事件给感兴趣的事件监听者。——–主要使用应用上下文。</p>
+<h4 id="使用应用上下文"><a href="#使用应用上下文" class="headerlink" title="使用应用上下文"></a>使用应用上下文</h4><p>Spring自带了多种类型的应用上下文。下面罗列的几个是你最有可能遇到的。<br><br>AnnotationConfigApplicationContext：从一个或多个基于Java的配置类中加载Spring应用上下文。<br><br><strong>AnnotationConfigWebApplicationContext</strong>：从一个或多个基于Java的配置类中加载Spring Web应用上下文。<br><br>ClassPathXmlApplicationContext：从类路径下的一个或多个XML配置文件中加载上下文定义，把应用上下文的定义文件作为类资源。<br><br>FileSystemXmlapplicationcontext：从文件系统下的一个或多个XML配置文件中加载上下文定义。<br><br><strong>XmlWebApplicationContext</strong>：从Web应用下的一个或多个XML配置文件中加载上下文定义。</p>
+<p>例子：<br>    <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">    ApplicationContext context = new FileSystemXmlApplicationContext("c:/knight.xml");</div><div class="line">    ApplicationContext context = new ClassPathXmlApplicationContext("knight.xml");</div><div class="line">    ``` </div><div class="line"></div><div class="line">使用FileSystemXmlApplicationContext和使用ClassPathXmlApplicationContext的区别在于：FileSystemXmlApplicationContext在指定的文件系统路径下查找knight.xml文件；而ClassPathXmlApplicationContext是在所有的类路径（包含JAR文件）下查找knight.xml文件。</div><div class="line"></div><div class="line">如果你想从Java配置中加载应用上下文，那么可以使用AnnotationConfigApplicationContext：</div><div class="line">```java </div><div class="line">ApplicationContext context = new AnnotationConfigApplicationContext(com.springinaction.</div><div class="line">                                knights.config.KnightConfig.class);</div><div class="line">``` </div><div class="line"></div><div class="line">### bean的生命周期</div><div class="line"></div><div class="line">1. Spring对bean进行实例化；</div><div class="line">2. Spring将值和bean的引用注入到bean对应的属性中；</div><div class="line">3. 如果bean实现了BeanNameAware接口，Spring将bean的ID传递给setBean-Name()方法；</div><div class="line">4. 如果bean实现了BeanFactoryAware接口，Spring将调用setBeanFactory()方法，将BeanFactory容器实例传入；</div><div class="line">5. 果bean实现了ApplicationContextAware接口，Spring将调用setApplicationContext()方法，将bean所在的应用上下文的引用传入进来；</div><div class="line">6. 如果bean实现了BeanPostProcessor接口，Spring将调用它们的post-ProcessBeforeInitialization()方法；</div><div class="line">7. 如果bean实现了InitializingBean接口，Spring将调用它们的after-PropertiesSet()方法。类似地，如果bean使用init-method声明了初始化方法，该方法也会被调用；</div><div class="line">8. 如果bean实现了BeanPostProcessor接口，Spring将调用它们的post-ProcessAfterInitialization()方法；</div><div class="line">9. 此时，bean已经准备就绪，可以被应用程序使用了，它们将一直驻留在应用上下文中，直到该应用上下文被销毁；</div><div class="line">10. 如果bean实现了DisposableBean接口，Spring将调用它的destroy()接口方法。同样，如果bean使用destroy-method声明了销毁方法，该方法也会被调用。</div><div class="line"></div><div class="line">写个例子：有三个java文件OneBean.java,PostService.java,Test.java,还有个上下文依赖关系文件applicationContext.xml</div><div class="line"></div><div class="line">**applicationContext.xml**</div><div class="line">```xml</div><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line">&lt;beans xmlns="http://www.springframework.org/schema/beans"</div><div class="line">       xmlns:context="http://www.springframework.org/schema/context"</div><div class="line">       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</div><div class="line">       xmlns:aop="http://www.springframework.org/schema/aop"  </div><div class="line">       xmlns:p="http://www.springframework.org/schema/p" </div><div class="line">    xsi:schemaLocation="  </div><div class="line">    http://www.springframework.org/schema/context  </div><div class="line">    http://www.springframework.org/schema/context/spring-context.xsd  </div><div class="line">    http://www.springframework.org/schema/beans  </div><div class="line">    http://www.springframework.org/schema/beans/spring-beans.xsd  </div><div class="line">    http://www.springframework.org/schema/aop  </div><div class="line">    http://www.springframework.org/schema/aop/spring-aop.xsd"&gt; </div><div class="line">    </div><div class="line">    &lt;bean id="oneBean" class="com.bean.life.OneBean" init-method="myInit" destroy-method="myDestroy" &gt;</div><div class="line">        &lt;property name="beanName1" value="555"&gt;&lt;/property&gt;</div><div class="line">    &lt;/bean&gt;</div><div class="line">    &lt;bean id="postService" class="com.bean.life.PostService"&gt;&lt;/bean&gt;</div><div class="line">   &lt;/beans&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>OneBean.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.bean.life;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.springframework.beans.BeansException;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.BeanFactory;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.BeanFactoryAware;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.BeanNameAware;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.DisposableBean;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.InitializingBean;</div><div class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</div><div class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContextAware;</div><div class="line"></div><div class="line"><span class="comment">//如果设置了init-method="myInit" destroy-method="myDestroy" </span></div><div class="line"><span class="comment">//两个方法（推荐使用）就不需要实现InitializingBean,DisposableBean</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OneBean</span> <span class="keyword">implements</span> <span class="title">BeanNameAware</span> ,<span class="title">BeanFactoryAware</span>,</span></div><div class="line">        <span class="title">ApplicationContextAware</span>,<span class="title">InitializingBean</span>,<span class="title">DisposableBean</span>  &#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> String beanName1 = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getBeanName1</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> beanName1;&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanName1</span><span class="params">(String beanName1)</span> </span>&#123;<span class="keyword">this</span>.beanName1 = beanName1;&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">OutName</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> beanName1;&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">OneBean</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"（1）我是OneBean的构造函数"</span>);</div><div class="line">		System.out.println(beanName1);</div><div class="line">	&#125;	</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"（2）将被设置的bean名称！"</span>+name);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanFactory</span><span class="params">(BeanFactory arg0)</span> <span class="keyword">throws</span> BeansException </span>&#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"-------------------------------------------------"</span>);</div><div class="line">		System.out.println(<span class="string">"（3）OneBean实现BeanFactoryAware后得到FactoryBean"</span></div><div class="line">                          + <span class="string">"(在OneBean.java输出)："</span>+arg0);</div><div class="line">		System.out.println(<span class="string">"    FactoryBean得到的OneBean与this本身相等："</span></div><div class="line">                                +(arg0.getBean(<span class="string">"oneBean"</span>) == <span class="keyword">this</span>));</div><div class="line">		System.out.println(<span class="string">"    "</span>+beanName1);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span></span></div><div class="line">			<span class="keyword">throws</span> BeansException &#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"------------------------------------------------"</span>);</div><div class="line">		System.out.println(<span class="string">"（4）OneBean实现ApplicationContextAware后得到ApplicationContext"</span></div><div class="line">                           +<span class="string">" (在OneBean.java输出)："</span>+applicationContext);</div><div class="line">		System.out.println(<span class="string">"    ApplicationContext得到的OneBean与this本身相等："</span></div><div class="line">                            +(applicationContext.getBean(<span class="string">"oneBean"</span>) == <span class="keyword">this</span>));</div><div class="line">		System.out.println(<span class="string">"    "</span>+beanName1);</div><div class="line">		System.out.println(<span class="string">"---------------------------------------------------"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"（6）运行afterPropertiesSet()方法"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myInit</span><span class="params">()</span> </span>&#123;System.out.println(<span class="string">"（7）执行自己定义初始化的方法myInit()（需要在xml里面配置）"</span>);&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myDestroy</span><span class="params">()</span> </span>&#123;System.out.println(<span class="string">"（10）执行自己定义Destroy()方法（需要在xml里面配置）"</span>);&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"（9）执行destroy()方法"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>PostService.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.bean.life;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.springframework.beans.BeansException;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.config.BeanPostProcessor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PostService</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span></span></div><div class="line">			<span class="keyword">throws</span> BeansException &#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		 System.out.println(<span class="string">"（5）---这是init之前执行的方法postProcessBeforeInitialization---"</span>);</div><div class="line">		 </div><div class="line">		<span class="keyword">return</span> bean;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span></span></div><div class="line">			<span class="keyword">throws</span> BeansException &#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"（8）----这是init之后执行的方法postProcessAfterInitialization----"</span>);</div><div class="line">		<span class="keyword">return</span> bean;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>Test.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.bean.life;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</div><div class="line"><span class="keyword">import</span> org.springframework.context.support.AbstractApplicationContext;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.service.ApplicationContextUtil;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"main---初始化之前！"</span>);</div><div class="line">		ApplicationContext applicationContext = ApplicationContextUtil.getAc();</div><div class="line">		System.out.println(<span class="string">"main---得到applicationContext后！"</span>);</div><div class="line">		OneBean oneBean = (OneBean) applicationContext.getBean(<span class="string">"oneBean"</span>);</div><div class="line">		System.out.println(<span class="string">"OneBean中的OutName方法调用："</span>+oneBean.OutName());</div><div class="line">		AbstractApplicationContext aac =(AbstractApplicationContext) applicationContext;</div><div class="line">		aac.close();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>执行结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">main---初始化之前！</div><div class="line">七月 14, 2017 4:19:48 下午 org.springframework.context.support.ClassPathXmlApplicationContext prepareRefresh</div><div class="line">信息: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6a047934: startup date [Fri Jul 14 16:19:48 CST 2017]; root of context hierarchy</div><div class="line">七月 14, 2017 4:19:48 下午 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions</div><div class="line">信息: Loading XML bean definitions from class path resource [applicationContext.xml]</div><div class="line">（1）我是OneBean的构造函数</div><div class="line">null</div><div class="line">（2）将被设置的bean名称！oneBean</div><div class="line">-------------------------------------------------------------------------</div><div class="line">（3）OneBean实现BeanFactoryAware后得到FactoryBean(在OneBean.java输出)：org.springframework.beans.factory.support.DefaultListableBeanFactory@b44eaa0: defining beans [oneBean,postService]; root of factory hierarchy</div><div class="line">    FactoryBean得到的OneBean与this本身相等：true</div><div class="line">    555</div><div class="line">---------------------------------------------------------------------------</div><div class="line">（4）OneBean实现ApplicationContextAware后得到ApplicationContext(在OneBean.java输出)：org.springframework.context.support.ClassPathXmlApplicationContext@6a047934: startup date [Fri Jul 14 16:19:48 CST 2017]; root of context hierarchy</div><div class="line">    ApplicationContext得到的OneBean与this本身相等：true</div><div class="line">    555</div><div class="line">---------------------------------------------------------------------------</div><div class="line">（5）---这是init之前执行的方法postProcessBeforeInitialization---</div><div class="line">（6）运行afterPropertiesSet()方法</div><div class="line">（7）执行自己定义初始化的方法myInit()（需要在xml里面配置）</div><div class="line">（8）----这是init之后执行的方法postProcessAfterInitialization----</div><div class="line">main---得到applicationContext后！</div><div class="line">OneBean中的OutName方法调用：555</div><div class="line">七月 14, 2017 4:19:48 下午 org.springframework.context.support.ClassPathXmlApplicationContext doClose</div><div class="line">信息: Closing org.springframework.context.support.ClassPathXmlApplicationContext@6a047934: startup date [Fri Jul 14 16:19:48 CST 2017]; root of context hierarchy</div><div class="line">（9）执行destroy()方法</div><div class="line">（10）执行自己定义Destroy()方法（需要在xml里面配置）</div></pre></td></tr></table></figure></p>
+<h3 id="spring模块"><a href="#Spring模块" class="headerlink" title="Spring模块"></a>Spring模块</h3><p>Spring框架由6个定义良好的模块分类组成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Data access &amp; integration</div><div class="line">  |----JDBC</div><div class="line">  |----OXM</div><div class="line">  |----Messaging</div><div class="line">  |----Transaction</div><div class="line">  |----ORM</div><div class="line">  |----JMS</div><div class="line"></div><div class="line">Web and remoting           \\Web与远程调用</div><div class="line">  |----Web </div><div class="line">  |----Web servlet</div><div class="line">  |----Web portlet</div><div class="line">  |----WebSocket</div><div class="line"></div><div class="line">Aspect-oriented programming  \\Spring的AOP模块</div><div class="line">  |----AOP</div><div class="line">  |----Aspects</div><div class="line"></div><div class="line">Instrumentation</div><div class="line">  |----Instrument Tomcat</div><div class="line">  |----Instrument</div><div class="line"></div><div class="line">Core Spring container        \\Spring核心容器</div><div class="line">  |----Beans</div><div class="line">  |----Core </div><div class="line">  |----Context </div><div class="line">  |----Expression</div><div class="line">  |----Context support</div><div class="line">Testing</div><div class="line">  |----Test</div></pre></td></tr></table></figure></p>
+<ol>
+<li>核心容器（Core Spring container ）</li>
+</ol>
+<ul>
+<li>spring-core和spring-beans：提供框架的基础部分，包括控制反转和依赖注入的特性，BeanFactory是用工厂模式来实现的，使我们不用自己去创建单例对象，并将依赖的配置和设计与业务逻辑分开来。</li>
+<li>spring-context模块是建立在前两者之上的，通过它可以使用框架风格（framework-style）的方法来访问对象，类似于JNDI服务注册。该模块集成了bean模块，并加入了国际化、事件传播、资源加载、透明化生成上下文，还支持Java EE特性如EJB、 JMX 和 basic remoting。context模块的关键是ApplicationContext接口。spring-context-support支持集成第三方库，如缓存、邮件、调度、模板引擎等。</li>
+<li>spring-expression: 提供了强大的EL（ expression language）在运行状态查询和操纵对象，它支持属性的赋值，通过setter和getter方法设置和获取属性值、方法调用、访问数组 集合、逻辑和数学操纵、变量命名、通过IoC容器检索对象。</li>
+</ul>
+<ol>
+<li>AOP和插装(Aspect-oriented programming )</li>
+</ol>
+<ul>
+<li>spring-aop :模块提供了面向切面编程的实现，使我们可以定义方法拦截器和切点来使得分离功能独立的业务。使用基于源的元数据功能，我们还可以将行为信息集成到代码中，这和.NET的属性很相似。</li>
+<li>spring-aspects :模块支持Spring 框架整合AspectJ.</li>
+<li>spring-instrument 在特定容器中实现类插装和类加载器的实施 。 spring-instrument-tomcat包含Tomcat的Spring插装代理。</li>
+</ul>
+<ol>
+<li>消息(Messaging)</li>
+</ol>
+<ul>
+<li>spring-messaging 模块包含从 Message，MessageChannel，MessageHandler 等其他基于消息的基础应用中得到的抽象。该模块还包含一系列的注解来讲消息映射到方法上，和SpringMVC注解类似 。</li>
+</ul>
+<ol>
+<li>数据访问控制(Data access &amp; integration)</li>
+</ol>
+<ul>
+<li>spring-jdbc提供JDBC抽象层 ，使我们从繁重的JDBC编程中解脱出来，并且不再需要为解析不同的数据库的异常而烦恼。</li>
+<li>spring-tx支持对所有POJO和实现了特定接口的类进行 编程式和申明式事务（ programmatic and declarative transaction ）管理。</li>
+<li>spring-orm整合了流行的ORM（object-relational mapping ）应用程序接口，包括JPA、JDO和Hibernate。使用该模块我们可以任意使用这些ORM框架和Spring的其他功能（如上面的申明式事务管理进行组合。</li>
+<li>spring-oxm为OXM（Object/XML mapping） 的实现提供抽象层，如 JAXB、Castor、XMLBeans、JiBX 和XStream。</li>
+<li>spring-jms 是Java消息服务(Java Messaging Service)，包含产生和接受消息 。Spring Framework 4.1将它并入在spring-messaging 模块。</li>
+</ul>
+<ol>
+<li>Web(Web and remoting)</li>
+</ol>
+<ul>
+<li>spring-web 包含基本的面向网络的集成特性，如文件分部上传，使用Servet监听器和面向网络的应用上下文初始化IoC容器。他还包括 HTTP 客户端和网络相关的 Spring远程支持。</li>
+<li>spring-webmvc 也被成为 Web-Servlet 模块，包含Spring的模型-视图-控制器（model-view-controller，MVC) 和 REST Web Services。 Spring  MVC 框架是得实体模型代码和网络表单清楚地离开来，还可以轻松集成Spring框架的其他特性。</li>
+<li>spring-webmvc-portlet 也被称为 Web-Portlet 模块，在Portlet 容器中实现MVC，并且能使用spring-webmvc 模块的功能。</li>
+</ul>
+<ol>
+<li>测试(Testing)</li>
+</ol>
+<ul>
+<li>spring-test 模块支持单元测试 JUnit 、集成测试 TestNG和独立代码测试 mock objects。它支持加载和缓存 Spring ApplicationContexts。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaee-spring-学习/" rel="tag"># javaee spring 学习</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/14/银海培训笔记-oracle/" rel="next" title="培训笔记 银海 oracle">
+                <i class="fa fa-chevron-left"></i> 培训笔记 银海 oracle
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/03/javaEE-SpringStudy-环境搭建练习/" rel="prev" title="spring学习 环境搭建练习">
+                spring学习 环境搭建练习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/9785339?v=3&s=400"
+               alt="SkyMing" />
+          <p class="site-author-name" itemprop="name">SkyMing</p>
+           
+              <p class="site-description motion-element" itemprop="description">hexo+github搭建成</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 src="//music.163.com/outchain/player?type=2&id=28461167&auto=0&height=32"></iframe>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制反转inversion-of-control"><span class="nav-number">2.</span> <span class="nav-text">控制反转(Inversion of Control)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖注入"><span class="nav-number">3.</span> <span class="nav-text">依赖注入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖"><span class="nav-number">3.1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖注入"><span class="nav-number">3.2.</span> <span class="nav-text">依赖注入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用切面"><span class="nav-number">4.</span> <span class="nav-text">应用切面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring容器containerp38"><span class="nav-number">5.</span> <span class="nav-text">Spring容器（container）P38</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用应用上下文"><span class="nav-number">5.1.</span> <span class="nav-text">使用应用上下文</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring模块"><span class="nav-number">6.</span> <span class="nav-text">Spring模块</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SkyMing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "a2037bfb845f4c77b35addc6497ddeb7",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("E9hbbsANROBH8tdFhPqpwMeb-gzGzoHsz", "GI5r6NIW1s0cYjX7jHsX2OBK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
