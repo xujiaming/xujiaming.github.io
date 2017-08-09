@@ -97,7 +97,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
 数据导出(exp)
 完全导出 导出到D:\zjgl.dmp 
 system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限2.">
-<meta property="og:updated_time" content="2017-07-22T01:08:12.910Z">
+<meta property="og:updated_time" content="2017-08-09T15:49:15.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="培训笔记 银海 oracle">
 <meta name="twitter:description" content="（exp/imp）数据导入导出 是在cmd命令下，而不是sqlplus中。
@@ -452,7 +452,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,035
+                  1,036
                 </span>
               
 
@@ -494,7 +494,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
 <p> full方式可以备份所有用户的数据库对象，包括表空间、用户信息等，owner=XX只能备份指定用户的对象，其他用户下的就不备份了，EXP中full=y和owner=XX是不能同时使用的。</p>
 </li>
 <li><p>将数据库orcl中的表t_users导出</p>
-<figure class="highlight plain"><figcaption><span>system/root@ORCL file= d:\t_users.dmp tables=(t_users)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    tables=xx 表示备份相关表，不能同时和owner、full使用。....更多操作百度。</div><div class="line"></div><div class="line">#### 数据导入(imp)</div><div class="line"></div><div class="line">1. 将D:\test.dmp 中的数据导入 test数据库中。</div><div class="line">    imp system/root@test file=D:\test.dmp</div><div class="line">导数据得时候，有可能报错。为什么？有以下主要的原因：</div><div class="line"></div><div class="line">   A. 导入的对象（表，视图，方法等）原本不属于当前连接的用户的&lt;br&gt;</div><div class="line">   B. 导入的对象在该数据库的指定用户下已经存在&lt;br&gt;</div><div class="line">   C. 导入的对象的原本用户不在这个数据库里&lt;br&gt;</div><div class="line">解决 </div><div class="line"></div><div class="line">2. 所有对象全部导入到指定的账户下：</div><div class="line">    ``` imp system/root@ORCL file=d:\test.dmp fromuser=zjgl touser=zjgl_new</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>system/root@ORCL file= d:\t_users.dmp tables=(t_users)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    tables=xx 表示备份相关表，不能同时和owner、full使用。....更多操作百度。</div><div class="line"></div><div class="line">#### 数据导入(imp)</div><div class="line">&lt;!--more--&gt;</div><div class="line"></div><div class="line">1. 将D:\test.dmp 中的数据导入 test数据库中。</div><div class="line">    imp system/root@test file=D:\test.dmp</div><div class="line">导数据得时候，有可能报错。为什么？有以下主要的原因：</div><div class="line"></div><div class="line">   A. 导入的对象（表，视图，方法等）原本不属于当前连接的用户的&lt;br&gt;</div><div class="line">   B. 导入的对象在该数据库的指定用户下已经存在&lt;br&gt;</div><div class="line">   C. 导入的对象的原本用户不在这个数据库里&lt;br&gt;</div><div class="line">解决 </div><div class="line"></div><div class="line">2. 所有对象全部导入到指定的账户下：</div><div class="line">    ``` imp system/root@ORCL file=d:\test.dmp fromuser=zjgl touser=zjgl_new</div></pre></td></tr></table></figure>
 <p> 其中fromuser=zjgl为.dmp文件里的对象的原先的owner, touser=zjgl_new为作为导入的对象的新的Owner.</p>
 </li>
 <li><p>忽略/插入数据：</p>
@@ -565,8 +565,8 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/13/javaBase-多形性知识点/" rel="next" title="java基础 多形性[多态](java编程思想)">
-                <i class="fa fa-chevron-left"></i> java基础 多形性[多态](java编程思想)
+              <a href="/2017/07/14/javaEE-SpringStudy-spring概述/" rel="next" title="spring学习 概述 (spring in action 4th)">
+                <i class="fa fa-chevron-left"></i> spring学习 概述 (spring in action 4th)
               </a>
             
           </div>
@@ -575,8 +575,8 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/14/javaEE-SpringStudy-spring概述/" rel="prev" title="spring学习 概述 (spring in action 4th)">
-                spring学习 概述 (spring in action 4th) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/03/javaEE-SpringStudy-环境搭建练习/" rel="prev" title="spring学习 环境搭建练习">
+                spring学习 环境搭建练习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

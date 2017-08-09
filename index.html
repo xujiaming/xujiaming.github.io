@@ -517,6 +517,247 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/07/14/银海培训笔记-oracle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SkyMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9785339?v=3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mingCode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/14/银海培训笔记-oracle/" itemprop="url">
+                  培训笔记 银海 oracle
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T14:08:31+08:00">
+                2017-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/培训/" itemprop="url" rel="index">
+                    <span itemprop="name">培训</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/培训/银海/" itemprop="url" rel="index">
+                    <span itemprop="name">银海</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/培训/银海/oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/14/银海培训笔记-oracle/" class="leancloud_visitors" data-flag-title="培训笔记 银海 oracle">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,036
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="expimp数据导入导出"><a href="#（exp-imp）数据导入导出" class="headerlink" title="（exp/imp）数据导入导出"></a>（exp/imp）数据导入导出</h3><p> 是在cmd命令下，而不是sqlplus中。</p>
+<h4 id="数据导出exp"><a href="#数据导出-exp" class="headerlink" title="数据导出(exp)"></a>数据导出(exp)</h4><ol>
+<li><p>完全导出 导出到D:\zjgl.dmp </p>
+<figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\orcl.dmp full=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限</div><div class="line"></div><div class="line">2. 将数据库orcl中zjgl用户与scott用户的表导出</div><div class="line"></div><div class="line">    ``` exp system/root@ORCL file=d:\zjgl_scott.dmp owner=(zjgl,scott)</div></pre></td></tr></table></figure>
+<p> full方式可以备份所有用户的数据库对象，包括表空间、用户信息等，owner=XX只能备份指定用户的对象，其他用户下的就不备份了，EXP中full=y和owner=XX是不能同时使用的。</p>
+</li>
+<li><p>将数据库orcl中的表t_users导出</p>
+<figure class="highlight plain"><figcaption><span>system/root@ORCL file= d:\t_users.dmp tables=(t_users)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    tables=xx 表示备份相关表，不能同时和owner、full使用。....更多操作百度。</div><div class="line"></div><div class="line">#### 数据导入(imp)</div><div class="line">&lt;!--more--&gt;</div><div class="line"></div><div class="line">1. 将D:\test.dmp 中的数据导入 test数据库中。</div><div class="line">    imp system/root@test file=D:\test.dmp</div><div class="line">导数据得时候，有可能报错。为什么？有以下主要的原因：</div><div class="line"></div><div class="line">   A. 导入的对象（表，视图，方法等）原本不属于当前连接的用户的&lt;br&gt;</div><div class="line">   B. 导入的对象在该数据库的指定用户下已经存在&lt;br&gt;</div><div class="line">   C. 导入的对象的原本用户不在这个数据库里&lt;br&gt;</div><div class="line">解决 </div><div class="line"></div><div class="line">2. 所有对象全部导入到指定的账户下：</div><div class="line">    ``` imp system/root@ORCL file=d:\test.dmp fromuser=zjgl touser=zjgl_new</div></pre></td></tr></table></figure>
+<p> 其中fromuser=zjgl为.dmp文件里的对象的原先的owner, touser=zjgl_new为作为导入的对象的新的Owner.</p>
+</li>
+<li><p>忽略/插入数据：</p>
+ <figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\test.dmp ignore=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中ignore=y告诉imp.exe把数据直接插入到相应对象（并且如果导入的对象里面有其他的对象，如约束，索引等，会在数据插入后被创建）。</div><div class="line"></div><div class="line">4. 将d:\test.dmp中的表test1 导入</div><div class="line">    ```imp system/root@ORCL file=d:\test.dmp tables=(test1)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="expdpimpdp数据泵导入导出"><a href="#expdp-impdp-数据泵导入导出" class="headerlink" title="(expdp/impdp)数据泵导入导出"></a>(expdp/impdp)数据泵导入导出</h3><p>使用expdp和impdp时应该注重的事项：</p>
+<ol>
+<li>exp和imp是客户端工具程序，它们既可以在客户端使用，也可以在服务端使用。</li>
+<li>expdp和impdp是服务端的工具程序，他们只能在oracle服务端使用，不能在客户端使用。</li>
+<li>imp只适用于exp导出的文件，不适用于expdp导出文件；impdp只适用于expdp导出的文件，而不适用于exp导出文件。</li>
+<li><p>对于10g以上的服务器，使用exp通常不能导出0行数据的空表，而此时必须使用expdp导出。</p>
+<p> 一 <figure class="highlight plain"><figcaption><span>sys/root@orcl as sysdba``` 登录dba用户<br></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    二 创建操作目录 ```create directory caozuo as &apos;R:\daochu&apos;;```&lt;br&gt;</div><div class="line">    三 查询是否存在 ```select * from dba_directories;```&lt;br&gt;</div><div class="line">    四 退出 sqlplus</div><div class="line"></div><div class="line">#### 导出</div><div class="line">1. 导出用户</div><div class="line">```expdp scott/tiger@orcl schemas=scott dumpfile=scott.dmp directory=caozuo logfile=expdb.log;</div></pre></td></tr></table></figure></p>
+<p>  导出日志必须有<strong>logfile=expdb.log</strong>，主要<strong>schemas=scott</strong></p>
+</li>
+<li><p>导出表</p>
+<figure class="highlight plain"><figcaption><span>scott/tiger@orcl tables=emp,dept dumpfile=scott_emp_dept.dmp directory=caozuo logfile=expdb2.log;``</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     主要**tables=emp,dept**</div><div class="line"></div><div class="line">3. 按查询条件导```expdp scott/tiger@orcl directory=caozuo dumpfile=expdp_where.dmp tables=emp query=&apos;where deptno=20&apos;;</div></pre></td></tr></table></figure>
+<p>  <strong>query=’where deptno=20’</strong></p>
+</li>
+<li>按表空间导</li>
+</ol>
+<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=tablespace.dmp tablespaces=temp,example```;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">**tablespaces=temp,example**</div><div class="line"></div><div class="line">5. 导整个数据库</div><div class="line">```expdp scott/tiger@orcl directory=caozuo dumpfile=full.dmp full=y;</div></pre></td></tr></table></figure>
+<p><strong>full=y</strong></p>
+<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><ol>
+<li>导入用户（从用户scott导入到用户scott）</li>
+</ol>
+<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=expdp.dmp ```**schemas=scott**;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2. 导入表（从scott用户中把表dept和emp导入到system用户中）</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp`` </div><div class="line">    **tables=scott.dept,scott.emp remap_schema=scott:system**;</div><div class="line"></div><div class="line">3. 导入表空间</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=tablespace.dmp ```**tablespaces=example**;</div><div class="line"></div><div class="line">4. 导入数据库</div><div class="line"></div><div class="line">```impdb system/manager@orcl directory=caozuo dumpfile=full.dmp``` **full=y**;</div><div class="line"></div><div class="line">5. 追加数据</div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp``` **schemas=system table_exists_action**</div><div class="line"></div><div class="line">### 函数</div><div class="line">#### 单行函数</div><div class="line">```coalesce(arg,arg1,...)``` 从左侧开始，第一个不为空的值&lt;br&gt;</div><div class="line">```nullif(A,B)```A和B相等返回NULL,否则返回A&lt;br&gt;</div><div class="line">```rtrim()```将右边的空格压缩类似ltrim()&lt;br&gt;</div><div class="line">```select NEXT_DAY(sysdate,&apos;星期五&apos;) from dual;``` &lt;br&gt;</div><div class="line">```trunc(sysdate,&apos;hh24&apos;)</div></pre></td></tr></table></figure>
+<h4 id="11g新函数"><a href="#11g新函数" class="headerlink" title="11g新函数"></a>11g新函数</h4><p>分组函数 可使用over()函数；示范：<code>select ename,deptno,avg(sal) over(partition by deptno) avgsal from emp;</code><br>Pivot 和 unpivot语法     <code>`http://blog.csdn.net/tianlesoftware/article/details/7060306</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/07/14/javaEE-SpringStudy-spring概述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -678,330 +919,22 @@
 
       
         
-          
-            <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Spring是一个开源框架，最早由Rod Johnson创建，并在《Expert One-on-One：J2EE Design andDevelopment》<br><a href="http://amzn.com/076454385" target="_blank" rel="external">地址</a>  这本著作中进行了介绍。Spring可以做很多事情，它为企业级开发提供给了丰富的功能，但是这些功能的底层都依赖<br>于它的两个核心特性，也就是<strong>依赖注入</strong>（dependency injection，<strong>DI</strong>）和<strong>面向切面编程</strong>（aspect-oriented programming，<strong>AOP</strong>）。</p>
-<p></p><p>为了降低Java开发的复杂性，Spring采取了以下4种关键策略：</p>
+          <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Spring是一个开源框架，最早由Rod Johnson创建，并在《Expert One-on-One：J2EE Design andDevelopment》<br><a href="http://amzn.com/076454385">地址</a>  这本著作中进行了介绍。Spring可以做很多事情，它为企业级开发提供给了丰富的功能，但是这些功能的底层都依赖<br>于它的两个核心特性，也就是<strong>依赖注入</strong>（dependency injection，<strong>DI</strong>）和<strong>面向切面编程</strong>（aspect-oriented programming，<strong>AOP</strong>）。</p>
+<p><p>为了降低Java开发的复杂性，Spring采取了以下4种关键策略：</p>
 <ol>
 <li>基于POJO的轻量级和最小侵入性编程；</li>
 <li>通过依赖注入和面向接口实现松耦合；</li>
 <li>基于切面和惯例进行声明式编程；</li>
 <li>通过切面和模板减少样板式代码</li>
 </ol>
-<p>Spring竭力避免因自身的API而弄乱你的应用代码。Spring不会强迫你实现Spring规范的接口<br>或继承Spring规范的类，相反，在基于Spring构建的应用中，它的类通常没有任何痕迹表明<br>你使用了Spring。</p>
-<h3 id="控制反转inversion-of-control"><a href="#控制反转-Inversion-of-Control" class="headerlink" title="控制反转(Inversion of Control)"></a>控制反转(Inversion of Control)</h3><p>控制反转即IoC (Inversion of Control)，它把传统上由程序代码直接操控的对象的调用权交给容器，通过容器来实现对象组件的装配和管理。所谓的“控制反转”概念就是对组件对象控制权的转移，从程序代码本身转移到了外部容器。</p>
-<p>IoC是一个很大的概念，可以用不同的方式来实现。其主要实现方式有两种：<1>依赖查找（Dependency Lookup）：容器提供回调接口和上下文环境给组件。<2>依赖注入（Dependency Injection）：组件不做定位查询，只提供普通的Java方法让容器去决定依赖关系。</2></1></p>
-<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><p>如果在 Class A 中，有 Class B 的实例，则称 Class A 对 Class B 有一个依赖。例如下面类 Human 中用到一个 Father 对象，我们就说类 Human 对类 Father 有一个依赖。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    Father father;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Human</span><span class="params">()</span> </span>&#123;</div><div class="line">        father = <span class="keyword">new</span> Father();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ol>
-<li>如果现在要改变 father 生成方式，如需要用new Father(String name)初始化 father，需要修改 Human 代码；</li>
-<li>如果想测试不同 Father 对象对 Human 的影响很困难，因为 father 的初始化被写死在了 Human 的构造函数中；</li>
-<li>如果new Father()过程非常缓慢，单测时我们希望用已经初始化好的 father 对象 Mock 掉这个过程也很困难。</li>
-</ol>
-<h4 id="依赖注入"><a href="#依赖注入-1" class="headerlink" title="依赖注入"></a>依赖注入</h4><p>上面将依赖在构造函数中直接初始化是一种 Hard init 方式，弊端在于两个类不够独立，不方便测试。我们还有另外一种 Init 方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    Father father;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Human</span><span class="params">(Father father)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.father = father;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面代码中，我们将 father 对象作为构造函数的一个参数传入。在调用 Human 的构造方法之前外部就已经初始化好了 Father 对象。像这种<strong>非自己主动初始化依赖，而通过外部来传入依赖的方式，我们就称为依赖注入</strong>。</p>
-<p>现在我们发现上面 1 中存在的两个问题都很好解决了，简单的说依赖注入主要有两个好处：(1). 解耦，将依赖之间解耦。(2). 因为已经解耦，所以方便做单元测试，尤其是 Mock 测试。</p>
-<p>有接口注入（Interface Injection），设值注入（Setter Injection）和构造子注入（Constructor Injection）三种方式</p>
-<p>在spring中可以通过xml文件，注解和java文件进行实现。</p>
-<p>依赖注入优点：<1>查找定位操作与应用代码完全无关。<2>不依赖于容器的API，可以很容易地在任何容器以外使用应用对象。<3>不需要特殊的接口，绝大多数对象可以做到完全不必依赖容器。</3></2></1></p>
-<h3 id="应用切面"><a href="#应用切面" class="headerlink" title="应用切面"></a>应用切面</h3><p>动态地将代码切入到类的指定方法、指定位置上的编程思想就是面向切面的编程。DI能够让相互协作的软件组件保持松散耦合，而面向切面编程（aspect-orientedprogramming，AOP）允许你把遍布应用各处的功能分离出来形成可重用的组件。</p>
-<h3 id="spring容器containerp38"><a href="#Spring容器（container）P38" class="headerlink" title="Spring容器（container）P38"></a>Spring容器（container）<em>P38</em></h3><p>在基于Spring的应用中，你的应用对象生存于Spring容器（container）中。如图1.4所示，Spring容器负责创建对象，装配它们，配置它们并管理它们的整个生命周期，从生存到死亡（在这里，可能就是new到finalize()）。</p>
-<p>Spring容器并不是只有一个。Spring自带了多个容器实现，可以归为两种不同的类型。<strong>bean工厂（由org.springframework. beans. factory.eanFactory接口定义）是最简单的容器</strong>，提供基本的DI支持。<strong>应用上下文（由org.springframework.context.ApplicationContext接口定义）基于BeanFactory构建</strong>，并提供应用框架级别的服务，例如从属性文件解析文本信息以及发布应用事件给感兴趣的事件监听者。——–主要使用应用上下文。</p>
-<h4 id="使用应用上下文"><a href="#使用应用上下文" class="headerlink" title="使用应用上下文"></a>使用应用上下文</h4><p>Spring自带了多种类型的应用上下文。下面罗列的几个是你最有可能遇到的。<br><br>AnnotationConfigApplicationContext：从一个或多个基于Java的配置类中加载Spring应用上下文。<br><br><strong>AnnotationConfigWebApplicationContext</strong>：从一个或多个基于Java的配置类中加载Spring Web应用上下文。<br><br>ClassPathXmlApplicationContext：从类路径下的一个或多个XML配置文件中加载上下文定义，把应用上下文的定义文件作为类资源。<br><br>FileSystemXmlapplicationcontext：从文件系统下的一个或多个XML配置文件中加载上下文定义。<br><br><strong>XmlWebApplicationContext</strong>：从Web应用下的一个或多个XML配置文件中加载上下文定义。</p>
-<p>例子：<br>    <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">    ApplicationContext context = new FileSystemXmlApplicationContext("c:/knight.xml");</div><div class="line">    ApplicationContext context = new ClassPathXmlApplicationContext("knight.xml");</div><div class="line">    ``` </div><div class="line"></div><div class="line">使用FileSystemXmlApplicationContext和使用ClassPathXmlApplicationContext的区别在于：FileSystemXmlApplicationContext在指定的文件系统路径下查找knight.xml文件；而ClassPathXmlApplicationContext是在所有的类路径（包含JAR文件）下查找knight.xml文件。</div><div class="line"></div><div class="line">如果你想从Java配置中加载应用上下文，那么可以使用AnnotationConfigApplicationContext：</div><div class="line">```java </div><div class="line">ApplicationContext context = new AnnotationConfigApplicationContext(com.springinaction.</div><div class="line">                                knights.config.KnightConfig.class);</div><div class="line">``` </div><div class="line"></div><div class="line">### bean的生命周期</div><div class="line"></div><div class="line">1. Spring对bean进行实例化；</div><div class="line">2. Spring将值和bean的引用注入到bean对应的属性中；</div><div class="line">3. 如果bean实现了BeanNameAware接口，Spring将bean的ID传递给setBean-Name()方法；</div><div class="line">4. 如果bean实现了BeanFactoryAware接口，Spring将调用setBeanFactory()方法，将BeanFactory容器实例传入；</div><div class="line">5. 果bean实现了ApplicationContextAware接口，Spring将调用setApplicationContext()方法，将bean所在的应用上下文的引用传入进来；</div><div class="line">6. 如果bean实现了BeanPostProcessor接口，Spring将调用它们的post-ProcessBeforeInitialization()方法；</div><div class="line">7. 如果bean实现了InitializingBean接口，Spring将调用它们的after-PropertiesSet()方法。类似地，如果bean使用init-method声明了初始化方法，该方法也会被调用；</div><div class="line">8. 如果bean实现了BeanPostProcessor接口，Spring将调用它们的post-ProcessAfterInitialization()方法；</div><div class="line">9. 此时，bean已经准备就绪，可以被应用程序使用了，它们将一直驻留在应用上下文中，直到该应用上下文被销毁；</div><div class="line">10. 如果bean实现了DisposableBean接口，Spring将调用它的destroy()接口方法。同样，如果bean使用destroy-method声明了销毁方法，该方法也会被调用。</div><div class="line"></div><div class="line">写个例子：有三个java文件OneBean.java,PostService.java,Test.java,还有个上下文依赖关系文件applicationContext.xml</div><div class="line"></div><div class="line">**applicationContext.xml**</div><div class="line">```xml</div><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line">&lt;beans xmlns="http://www.springframework.org/schema/beans"</div><div class="line">       xmlns:context="http://www.springframework.org/schema/context"</div><div class="line">       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</div><div class="line">       xmlns:aop="http://www.springframework.org/schema/aop"  </div><div class="line">       xmlns:p="http://www.springframework.org/schema/p" </div><div class="line">    xsi:schemaLocation="  </div><div class="line">    http://www.springframework.org/schema/context  </div><div class="line">    http://www.springframework.org/schema/context/spring-context.xsd  </div><div class="line">    http://www.springframework.org/schema/beans  </div><div class="line">    http://www.springframework.org/schema/beans/spring-beans.xsd  </div><div class="line">    http://www.springframework.org/schema/aop  </div><div class="line">    http://www.springframework.org/schema/aop/spring-aop.xsd"&gt; </div><div class="line">    </div><div class="line">    &lt;bean id="oneBean" class="com.bean.life.OneBean" init-method="myInit" destroy-method="myDestroy" &gt;</div><div class="line">        &lt;property name="beanName1" value="555"&gt;&lt;/property&gt;</div><div class="line">    &lt;/bean&gt;</div><div class="line">    &lt;bean id="postService" class="com.bean.life.PostService"&gt;&lt;/bean&gt;</div><div class="line">   &lt;/beans&gt;</div></pre></td></tr></table></figure></p>
-<p><strong>OneBean.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.bean.life;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.springframework.beans.BeansException;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.BeanFactory;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.BeanFactoryAware;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.BeanNameAware;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.DisposableBean;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.InitializingBean;</div><div class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</div><div class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContextAware;</div><div class="line"></div><div class="line"><span class="comment">//如果设置了init-method="myInit" destroy-method="myDestroy" </span></div><div class="line"><span class="comment">//两个方法（推荐使用）就不需要实现InitializingBean,DisposableBean</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OneBean</span> <span class="keyword">implements</span> <span class="title">BeanNameAware</span> ,<span class="title">BeanFactoryAware</span>,</span></div><div class="line">        <span class="title">ApplicationContextAware</span>,<span class="title">InitializingBean</span>,<span class="title">DisposableBean</span>  &#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> String beanName1 = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getBeanName1</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> beanName1;&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanName1</span><span class="params">(String beanName1)</span> </span>&#123;<span class="keyword">this</span>.beanName1 = beanName1;&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">OutName</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> beanName1;&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">OneBean</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"（1）我是OneBean的构造函数"</span>);</div><div class="line">		System.out.println(beanName1);</div><div class="line">	&#125;	</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"（2）将被设置的bean名称！"</span>+name);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanFactory</span><span class="params">(BeanFactory arg0)</span> <span class="keyword">throws</span> BeansException </span>&#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"-------------------------------------------------"</span>);</div><div class="line">		System.out.println(<span class="string">"（3）OneBean实现BeanFactoryAware后得到FactoryBean"</span></div><div class="line">                          + <span class="string">"(在OneBean.java输出)："</span>+arg0);</div><div class="line">		System.out.println(<span class="string">"    FactoryBean得到的OneBean与this本身相等："</span></div><div class="line">                                +(arg0.getBean(<span class="string">"oneBean"</span>) == <span class="keyword">this</span>));</div><div class="line">		System.out.println(<span class="string">"    "</span>+beanName1);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span></span></div><div class="line">			<span class="keyword">throws</span> BeansException &#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"------------------------------------------------"</span>);</div><div class="line">		System.out.println(<span class="string">"（4）OneBean实现ApplicationContextAware后得到ApplicationContext"</span></div><div class="line">                           +<span class="string">" (在OneBean.java输出)："</span>+applicationContext);</div><div class="line">		System.out.println(<span class="string">"    ApplicationContext得到的OneBean与this本身相等："</span></div><div class="line">                            +(applicationContext.getBean(<span class="string">"oneBean"</span>) == <span class="keyword">this</span>));</div><div class="line">		System.out.println(<span class="string">"    "</span>+beanName1);</div><div class="line">		System.out.println(<span class="string">"---------------------------------------------------"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"（6）运行afterPropertiesSet()方法"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myInit</span><span class="params">()</span> </span>&#123;System.out.println(<span class="string">"（7）执行自己定义初始化的方法myInit()（需要在xml里面配置）"</span>);&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myDestroy</span><span class="params">()</span> </span>&#123;System.out.println(<span class="string">"（10）执行自己定义Destroy()方法（需要在xml里面配置）"</span>);&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"（9）执行destroy()方法"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>PostService.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.bean.life;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.springframework.beans.BeansException;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.config.BeanPostProcessor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PostService</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span></span></div><div class="line">			<span class="keyword">throws</span> BeansException &#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		 System.out.println(<span class="string">"（5）---这是init之前执行的方法postProcessBeforeInitialization---"</span>);</div><div class="line">		 </div><div class="line">		<span class="keyword">return</span> bean;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span></span></div><div class="line">			<span class="keyword">throws</span> BeansException &#123;</div><div class="line">		<span class="comment">// TODO 自动生成的方法存根</span></div><div class="line">		System.out.println(<span class="string">"（8）----这是init之后执行的方法postProcessAfterInitialization----"</span>);</div><div class="line">		<span class="keyword">return</span> bean;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>Test.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.bean.life;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</div><div class="line"><span class="keyword">import</span> org.springframework.context.support.AbstractApplicationContext;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.service.ApplicationContextUtil;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"main---初始化之前！"</span>);</div><div class="line">		ApplicationContext applicationContext = ApplicationContextUtil.getAc();</div><div class="line">		System.out.println(<span class="string">"main---得到applicationContext后！"</span>);</div><div class="line">		OneBean oneBean = (OneBean) applicationContext.getBean(<span class="string">"oneBean"</span>);</div><div class="line">		System.out.println(<span class="string">"OneBean中的OutName方法调用："</span>+oneBean.OutName());</div><div class="line">		AbstractApplicationContext aac =(AbstractApplicationContext) applicationContext;</div><div class="line">		aac.close();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>执行结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">main---初始化之前！</div><div class="line">七月 14, 2017 4:19:48 下午 org.springframework.context.support.ClassPathXmlApplicationContext prepareRefresh</div><div class="line">信息: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6a047934: startup date [Fri Jul 14 16:19:48 CST 2017]; root of context hierarchy</div><div class="line">七月 14, 2017 4:19:48 下午 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions</div><div class="line">信息: Loading XML bean definitions from class path resource [applicationContext.xml]</div><div class="line">（1）我是OneBean的构造函数</div><div class="line">null</div><div class="line">（2）将被设置的bean名称！oneBean</div><div class="line">-------------------------------------------------------------------------</div><div class="line">（3）OneBean实现BeanFactoryAware后得到FactoryBean(在OneBean.java输出)：org.springframework.beans.factory.support.DefaultListableBeanFactory@b44eaa0: defining beans [oneBean,postService]; root of factory hierarchy</div><div class="line">    FactoryBean得到的OneBean与this本身相等：true</div><div class="line">    555</div><div class="line">---------------------------------------------------------------------------</div><div class="line">（4）OneBean实现ApplicationContextAware后得到ApplicationContext(在OneBean.java输出)：org.springframework.context.support.ClassPathXmlApplicationContext@6a047934: startup date [Fri Jul 14 16:19:48 CST 2017]; root of context hierarchy</div><div class="line">    ApplicationContext得到的OneBean与this本身相等：true</div><div class="line">    555</div><div class="line">---------------------------------------------------------------------------</div><div class="line">（5）---这是init之前执行的方法postProcessBeforeInitialization---</div><div class="line">（6）运行afterPropertiesSet()方法</div><div class="line">（7）执行自己定义初始化的方法myInit()（需要在xml里面配置）</div><div class="line">（8）----这是init之后执行的方法postProcessAfterInitialization----</div><div class="line">main---得到applicationContext后！</div><div class="line">OneBean中的OutName方法调用：555</div><div class="line">七月 14, 2017 4:19:48 下午 org.springframework.context.support.ClassPathXmlApplicationContext doClose</div><div class="line">信息: Closing org.springframework.context.support.ClassPathXmlApplicationContext@6a047934: startup date [Fri Jul 14 16:19:48 CST 2017]; root of context hierarchy</div><div class="line">（9）执行destroy()方法</div><div class="line">（10）执行自己定义Destroy()方法（需要在xml里面配置）</div></pre></td></tr></table></figure></p>
-<h3 id="spring模块"><a href="#Spring模块" class="headerlink" title="Spring模块"></a>Spring模块</h3><p>Spring框架由6个定义良好的模块分类组成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Data access &amp; integration</div><div class="line">  |----JDBC</div><div class="line">  |----OXM</div><div class="line">  |----Messaging</div><div class="line">  |----Transaction</div><div class="line">  |----ORM</div><div class="line">  |----JMS</div><div class="line"></div><div class="line">Web and remoting           \\Web与远程调用</div><div class="line">  |----Web </div><div class="line">  |----Web servlet</div><div class="line">  |----Web portlet</div><div class="line">  |----WebSocket</div><div class="line"></div><div class="line">Aspect-oriented programming  \\Spring的AOP模块</div><div class="line">  |----AOP</div><div class="line">  |----Aspects</div><div class="line"></div><div class="line">Instrumentation</div><div class="line">  |----Instrument Tomcat</div><div class="line">  |----Instrument</div><div class="line"></div><div class="line">Core Spring container        \\Spring核心容器</div><div class="line">  |----Beans</div><div class="line">  |----Core </div><div class="line">  |----Context </div><div class="line">  |----Expression</div><div class="line">  |----Context support</div><div class="line">Testing</div><div class="line">  |----Test</div></pre></td></tr></table></figure></p>
-<ol>
-<li>核心容器（Core Spring container ）</li>
-</ol>
-<ul>
-<li>spring-core和spring-beans：提供框架的基础部分，包括控制反转和依赖注入的特性，BeanFactory是用工厂模式来实现的，使我们不用自己去创建单例对象，并将依赖的配置和设计与业务逻辑分开来。</li>
-<li>spring-context模块是建立在前两者之上的，通过它可以使用框架风格（framework-style）的方法来访问对象，类似于JNDI服务注册。该模块集成了bean模块，并加入了国际化、事件传播、资源加载、透明化生成上下文，还支持Java EE特性如EJB、 JMX 和 basic remoting。context模块的关键是ApplicationContext接口。spring-context-support支持集成第三方库，如缓存、邮件、调度、模板引擎等。</li>
-<li>spring-expression: 提供了强大的EL（ expression language）在运行状态查询和操纵对象，它支持属性的赋值，通过setter和getter方法设置和获取属性值、方法调用、访问数组 集合、逻辑和数学操纵、变量命名、通过IoC容器检索对象。</li>
-</ul>
-<ol>
-<li>AOP和插装(Aspect-oriented programming )</li>
-</ol>
-<ul>
-<li>spring-aop :模块提供了面向切面编程的实现，使我们可以定义方法拦截器和切点来使得分离功能独立的业务。使用基于源的元数据功能，我们还可以将行为信息集成到代码中，这和.NET的属性很相似。</li>
-<li>spring-aspects :模块支持Spring 框架整合AspectJ.</li>
-<li>spring-instrument 在特定容器中实现类插装和类加载器的实施 。 spring-instrument-tomcat包含Tomcat的Spring插装代理。</li>
-</ul>
-<ol>
-<li>消息(Messaging)</li>
-</ol>
-<ul>
-<li>spring-messaging 模块包含从 Message，MessageChannel，MessageHandler 等其他基于消息的基础应用中得到的抽象。该模块还包含一系列的注解来讲消息映射到方法上，和SpringMVC注解类似 。</li>
-</ul>
-<ol>
-<li>数据访问控制(Data access &amp; integration)</li>
-</ol>
-<ul>
-<li>spring-jdbc提供JDBC抽象层 ，使我们从繁重的JDBC编程中解脱出来，并且不再需要为解析不同的数据库的异常而烦恼。</li>
-<li>spring-tx支持对所有POJO和实现了特定接口的类进行 编程式和申明式事务（ programmatic and declarative transaction ）管理。</li>
-<li>spring-orm整合了流行的ORM（object-relational mapping ）应用程序接口，包括JPA、JDO和Hibernate。使用该模块我们可以任意使用这些ORM框架和Spring的其他功能（如上面的申明式事务管理进行组合。</li>
-<li>spring-oxm为OXM（Object/XML mapping） 的实现提供抽象层，如 JAXB、Castor、XMLBeans、JiBX 和XStream。</li>
-<li>spring-jms 是Java消息服务(Java Messaging Service)，包含产生和接受消息 。Spring Framework 4.1将它并入在spring-messaging 模块。</li>
-</ul>
-<ol>
-<li>Web(Web and remoting)</li>
-</ol>
-<ul>
-<li>spring-web 包含基本的面向网络的集成特性，如文件分部上传，使用Servet监听器和面向网络的应用上下文初始化IoC容器。他还包括 HTTP 客户端和网络相关的 Spring远程支持。</li>
-<li>spring-webmvc 也被成为 Web-Servlet 模块，包含Spring的模型-视图-控制器（model-view-controller，MVC) 和 REST Web Services。 Spring  MVC 框架是得实体模型代码和网络表单清楚地离开来，还可以轻松集成Spring框架的其他特性。</li>
-<li>spring-webmvc-portlet 也被称为 Web-Portlet 模块，在Portlet 容器中实现MVC，并且能使用spring-webmvc 模块的功能。</li>
-</ul>
-<ol>
-<li>测试(Testing)</li>
-</ol>
-<ul>
-<li>spring-test 模块支持单元测试 JUnit 、集成测试 TestNG和独立代码测试 mock objects。它支持加载和缓存 Spring ApplicationContexts。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/07/14/银海培训笔记-oracle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SkyMing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9785339?v=3&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mingCode">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/14/银海培训笔记-oracle/" itemprop="url">
-                  培训笔记 银海 oracle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T14:08:31+08:00">
-                2017-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/" itemprop="url" rel="index">
-                    <span itemprop="name">培训</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/银海/" itemprop="url" rel="index">
-                    <span itemprop="name">银海</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/银海/oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">oracle</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/07/14/银海培训笔记-oracle/" class="leancloud_visitors" data-flag-title="培训笔记 银海 oracle">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,035
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="expimp数据导入导出"><a href="#（exp-imp）数据导入导出" class="headerlink" title="（exp/imp）数据导入导出"></a>（exp/imp）数据导入导出</h3><p> 是在cmd命令下，而不是sqlplus中。</p>
-<h4 id="数据导出exp"><a href="#数据导出-exp" class="headerlink" title="数据导出(exp)"></a>数据导出(exp)</h4><ol>
-<li><p>完全导出 导出到D:\zjgl.dmp </p>
-<figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\orcl.dmp full=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限</div><div class="line"></div><div class="line">2. 将数据库orcl中zjgl用户与scott用户的表导出</div><div class="line"></div><div class="line">    ``` exp system/root@ORCL file=d:\zjgl_scott.dmp owner=(zjgl,scott)</div></pre></td></tr></table></figure>
-<p> full方式可以备份所有用户的数据库对象，包括表空间、用户信息等，owner=XX只能备份指定用户的对象，其他用户下的就不备份了，EXP中full=y和owner=XX是不能同时使用的。</p>
-</li>
-<li><p>将数据库orcl中的表t_users导出</p>
-<figure class="highlight plain"><figcaption><span>system/root@ORCL file= d:\t_users.dmp tables=(t_users)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    tables=xx 表示备份相关表，不能同时和owner、full使用。....更多操作百度。</div><div class="line"></div><div class="line">#### 数据导入(imp)</div><div class="line"></div><div class="line">1. 将D:\test.dmp 中的数据导入 test数据库中。</div><div class="line">    imp system/root@test file=D:\test.dmp</div><div class="line">导数据得时候，有可能报错。为什么？有以下主要的原因：</div><div class="line"></div><div class="line">   A. 导入的对象（表，视图，方法等）原本不属于当前连接的用户的&lt;br&gt;</div><div class="line">   B. 导入的对象在该数据库的指定用户下已经存在&lt;br&gt;</div><div class="line">   C. 导入的对象的原本用户不在这个数据库里&lt;br&gt;</div><div class="line">解决 </div><div class="line"></div><div class="line">2. 所有对象全部导入到指定的账户下：</div><div class="line">    ``` imp system/root@ORCL file=d:\test.dmp fromuser=zjgl touser=zjgl_new</div></pre></td></tr></table></figure>
-<p> 其中fromuser=zjgl为.dmp文件里的对象的原先的owner, touser=zjgl_new为作为导入的对象的新的Owner.</p>
-</li>
-<li><p>忽略/插入数据：</p>
- <figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\test.dmp ignore=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中ignore=y告诉imp.exe把数据直接插入到相应对象（并且如果导入的对象里面有其他的对象，如约束，索引等，会在数据插入后被创建）。</div><div class="line"></div><div class="line">4. 将d:\test.dmp中的表test1 导入</div><div class="line">    ```imp system/root@ORCL file=d:\test.dmp tables=(test1)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="expdpimpdp数据泵导入导出"><a href="#expdp-impdp-数据泵导入导出" class="headerlink" title="(expdp/impdp)数据泵导入导出"></a>(expdp/impdp)数据泵导入导出</h3><p>使用expdp和impdp时应该注重的事项：</p>
-<ol>
-<li>exp和imp是客户端工具程序，它们既可以在客户端使用，也可以在服务端使用。</li>
-<li>expdp和impdp是服务端的工具程序，他们只能在oracle服务端使用，不能在客户端使用。</li>
-<li>imp只适用于exp导出的文件，不适用于expdp导出文件；impdp只适用于expdp导出的文件，而不适用于exp导出文件。</li>
-<li><p>对于10g以上的服务器，使用exp通常不能导出0行数据的空表，而此时必须使用expdp导出。</p>
-<p> 一 <figure class="highlight plain"><figcaption><span>sys/root@orcl as sysdba``` 登录dba用户<br></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    二 创建操作目录 ```create directory caozuo as &apos;R:\daochu&apos;;```&lt;br&gt;</div><div class="line">    三 查询是否存在 ```select * from dba_directories;```&lt;br&gt;</div><div class="line">    四 退出 sqlplus</div><div class="line"></div><div class="line">#### 导出</div><div class="line">1. 导出用户</div><div class="line">```expdp scott/tiger@orcl schemas=scott dumpfile=scott.dmp directory=caozuo logfile=expdb.log;</div></pre></td></tr></table></figure></p>
-<p>  导出日志必须有<strong>logfile=expdb.log</strong>，主要<strong>schemas=scott</strong></p>
-</li>
-<li><p>导出表</p>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl tables=emp,dept dumpfile=scott_emp_dept.dmp directory=caozuo logfile=expdb2.log;``</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     主要**tables=emp,dept**</div><div class="line"></div><div class="line">3. 按查询条件导```expdp scott/tiger@orcl directory=caozuo dumpfile=expdp_where.dmp tables=emp query=&apos;where deptno=20&apos;;</div></pre></td></tr></table></figure>
-<p>  <strong>query=’where deptno=20’</strong></p>
-</li>
-<li>按表空间导</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=tablespace.dmp tablespaces=temp,example```;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">**tablespaces=temp,example**</div><div class="line"></div><div class="line">5. 导整个数据库</div><div class="line">```expdp scott/tiger@orcl directory=caozuo dumpfile=full.dmp full=y;</div></pre></td></tr></table></figure>
-<p><strong>full=y</strong></p>
-<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><ol>
-<li>导入用户（从用户scott导入到用户scott）</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=expdp.dmp ```**schemas=scott**;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2. 导入表（从scott用户中把表dept和emp导入到system用户中）</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp`` </div><div class="line">    **tables=scott.dept,scott.emp remap_schema=scott:system**;</div><div class="line"></div><div class="line">3. 导入表空间</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=tablespace.dmp ```**tablespaces=example**;</div><div class="line"></div><div class="line">4. 导入数据库</div><div class="line"></div><div class="line">```impdb system/manager@orcl directory=caozuo dumpfile=full.dmp``` **full=y**;</div><div class="line"></div><div class="line">5. 追加数据</div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp``` **schemas=system table_exists_action**</div><div class="line"></div><div class="line">### 函数</div><div class="line">#### 单行函数</div><div class="line">```coalesce(arg,arg1,...)``` 从左侧开始，第一个不为空的值&lt;br&gt;</div><div class="line">```nullif(A,B)```A和B相等返回NULL,否则返回A&lt;br&gt;</div><div class="line">```rtrim()```将右边的空格压缩类似ltrim()&lt;br&gt;</div><div class="line">```select NEXT_DAY(sysdate,&apos;星期五&apos;) from dual;``` &lt;br&gt;</div><div class="line">```trunc(sysdate,&apos;hh24&apos;)</div></pre></td></tr></table></figure>
-<h4 id="11g新函数"><a href="#11g新函数" class="headerlink" title="11g新函数"></a>11g新函数</h4><p>分组函数 可使用over()函数；示范：<code>select ename,deptno,avg(sal) over(partition by deptno) avgsal from emp;</code><br>Pivot 和 unpivot语法     <code>`http://blog.csdn.net/tianlesoftware/article/details/7060306</code></p>
-
-          
+<p>Spring竭力避免因自身的API而弄乱你的应用代码。Spring不会强迫你实现Spring规范的接口<br>或继承Spring规范的类，相反，在基于Spring构建的应用中，它的类通常没有任何痕迹表明<br>你使用了Spring。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/14/javaEE-SpringStudy-spring概述/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
