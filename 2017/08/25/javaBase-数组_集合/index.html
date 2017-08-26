@@ -69,7 +69,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="培训笔记 oracle," />
+  <meta name="keywords" content="java 数组 集合," />
 
 
 
@@ -85,25 +85,30 @@
 
 
 
-<meta name="description" content="（exp/imp）数据导入导出 是在cmd命令下，而不是sqlplus中。
-数据导出(exp)
-完全导出 导出到D:\zjgl.dmp 
-system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限2.">
+<meta name="description" content="数组
+定义和初始化
+
+
+1Gerbil[] arr = new Gerbil[10];">
 <meta property="og:type" content="article">
-<meta property="og:title" content="培训笔记 银海 oracle">
-<meta property="og:url" content="http://mingcode.cn/2017/07/14/银海培训笔记-oracle/index.html">
+<meta property="og:title" content="java基础 数组—集合(java编程思想)">
+<meta property="og:url" content="http://mingcode.cn/2017/08/25/javaBase-数组_集合/index.html">
 <meta property="og:site_name" content="mingCode">
-<meta property="og:description" content="（exp/imp）数据导入导出 是在cmd命令下，而不是sqlplus中。
-数据导出(exp)
-完全导出 导出到D:\zjgl.dmp 
-system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限2.">
-<meta property="og:updated_time" content="2017-08-09T15:52:36.219Z">
+<meta property="og:description" content="数组
+定义和初始化
+
+
+1Gerbil[] arr = new Gerbil[10];">
+<meta property="og:image" content="http://www.plantuml.com/plantuml/svg/XLDBJWCn3DtFAIAndXu0LKXL5r2fh5f0BDsfWQXXfYH1g09kmPubT-0yI5o3EEaapdp4QYRllTZFTYnhY_eEAXJpHYcih6pgGaPmAOrbnnNoqoNisMdXVi0sciiRRN6RomAM1vetZtlGi57O1_E8v2ScWesn6YehAWN6YDdnIFb6A5RZYC8NFCAHwL7gwHbhAq7v086y0FFWp8YJSurOtw9IpGkZNBWXQgOr72XAJXR9kvY-JIPXD5sGBBRzIRBOCNBZKTwh2APnyR2E8CMf-Ftu_Fd-Ok4TmuHHm3DwaIycyLtF0yEXrZ1BL5LVbT_sxV2P-l1_Tob-JCb1rYP7bcKxqYAsAi1hDoY2subxS2dh7MxR6xrGYoqz67iO5TmWx4P98jP-OzBoY6bPdl6zOQMaMxokI501H1o_tG9yWzfHv3TuemDpxLhiaeTFW5OMgjs0DBxrBfVD8LkjOPWRzhAzImZtAAwiL4Qy5a8SDpQz0PD0xyCKxty0">
+<meta property="og:updated_time" content="2017-08-26T15:57:31.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="培训笔记 银海 oracle">
-<meta name="twitter:description" content="（exp/imp）数据导入导出 是在cmd命令下，而不是sqlplus中。
-数据导出(exp)
-完全导出 导出到D:\zjgl.dmp 
-system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限2.">
+<meta name="twitter:title" content="java基础 数组—集合(java编程思想)">
+<meta name="twitter:description" content="数组
+定义和初始化
+
+
+1Gerbil[] arr = new Gerbil[10];">
+<meta name="twitter:image" content="http://www.plantuml.com/plantuml/svg/XLDBJWCn3DtFAIAndXu0LKXL5r2fh5f0BDsfWQXXfYH1g09kmPubT-0yI5o3EEaapdp4QYRllTZFTYnhY_eEAXJpHYcih6pgGaPmAOrbnnNoqoNisMdXVi0sciiRRN6RomAM1vetZtlGi57O1_E8v2ScWesn6YehAWN6YDdnIFb6A5RZYC8NFCAHwL7gwHbhAq7v086y0FFWp8YJSurOtw9IpGkZNBWXQgOr72XAJXR9kvY-JIPXD5sGBBRzIRBOCNBZKTwh2APnyR2E8CMf-Ftu_Fd-Ok4TmuHHm3DwaIycyLtF0yEXrZ1BL5LVbT_sxV2P-l1_Tob-JCb1rYP7bcKxqYAsAi1hDoY2subxS2dh7MxR6xrGYoqz67iO5TmWx4P98jP-OzBoY6bPdl6zOQMaMxokI501H1o_tG9yWzfHv3TuemDpxLhiaeTFW5OMgjs0DBxrBfVD8LkjOPWRzhAzImZtAAwiL4Qy5a8SDpQz0PD0xyCKxty0">
 
 
 
@@ -131,13 +136,13 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
 
 
 
-  <link rel="canonical" href="http://mingcode.cn/2017/07/14/银海培训笔记-oracle/"/>
+  <link rel="canonical" href="http://mingcode.cn/2017/08/25/javaBase-数组_集合/"/>
 
 
 
 
 
-  <title> 培训笔记 银海 oracle | mingCode </title>
+  <title> java基础 数组—集合(java编程思想) | mingCode </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -320,7 +325,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/07/14/银海培训笔记-oracle/">
+    <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/08/25/javaBase-数组_集合/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SkyMing">
@@ -341,7 +346,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
             
             
               
-                培训笔记 银海 oracle
+                java基础 数组—集合(java编程思想)
               
             
           </h1>
@@ -356,8 +361,8 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T14:08:31+08:00">
-                2017-07-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T21:22:28+08:00">
+                2017-08-25
               </time>
             
 
@@ -379,8 +384,8 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/" itemprop="url" rel="index">
-                    <span itemprop="name">培训</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -390,8 +395,8 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/银海/" itemprop="url" rel="index">
-                    <span itemprop="name">银海</span>
+                  <a href="/categories/java/基础/" itemprop="url" rel="index">
+                    <span itemprop="name">基础</span>
                   </a>
                 </span>
 
@@ -401,8 +406,8 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/银海/oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">oracle</span>
+                  <a href="/categories/java/基础/数组-集合/" itemprop="url" rel="index">
+                    <span itemprop="name">数组 集合</span>
                   </a>
                 </span>
 
@@ -419,7 +424,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/07/14/银海培训笔记-oracle/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/08/25/javaBase-数组_集合/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -428,7 +433,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
 
           
           
-             <span id="/2017/07/14/银海培训笔记-oracle/" class="leancloud_visitors" data-flag-title="培训笔记 银海 oracle">
+             <span id="/2017/08/25/javaBase-数组_集合/" class="leancloud_visitors" data-flag-title="java基础 数组—集合(java编程思想)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -452,7 +457,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,035
+                  1,571
                 </span>
               
 
@@ -468,7 +473,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -487,43 +492,109 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
       
 
       
-        <h3 id="expimp数据导入导出"><a href="#（exp-imp）数据导入导出" class="headerlink" title="（exp/imp）数据导入导出"></a>（exp/imp）数据导入导出</h3><p> 是在cmd命令下，而不是sqlplus中。</p>
-<h4 id="数据导出exp"><a href="#数据导出-exp" class="headerlink" title="数据导出(exp)"></a>数据导出(exp)</h4><ol>
-<li><p>完全导出 导出到D:\zjgl.dmp </p>
-<figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\orcl.dmp full=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限</div><div class="line"></div><div class="line">2. 将数据库orcl中zjgl用户与scott用户的表导出</div><div class="line"></div><div class="line">    ``` exp system/root@ORCL file=d:\zjgl_scott.dmp owner=(zjgl,scott)</div></pre></td></tr></table></figure>
-<p> full方式可以备份所有用户的数据库对象，包括表空间、用户信息等，owner=XX只能备份指定用户的对象，其他用户下的就不备份了，EXP中full=y和owner=XX是不能同时使用的。</p>
-<a id="more"></a>
-</li>
-<li><p>将数据库orcl中的表t_users导出</p>
-<figure class="highlight plain"><figcaption><span>system/root@ORCL file= d:\t_users.dmp tables=(t_users)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    tables=xx 表示备份相关表，不能同时和owner、full使用。....更多操作百度。</div><div class="line"></div><div class="line">#### 数据导入(imp)</div><div class="line"></div><div class="line"></div><div class="line">1. 将D:\test.dmp 中的数据导入 test数据库中。</div><div class="line">    imp system/root@test file=D:\test.dmp</div><div class="line">导数据得时候，有可能报错。为什么？有以下主要的原因：</div><div class="line"></div><div class="line">   A. 导入的对象（表，视图，方法等）原本不属于当前连接的用户的&lt;br&gt;</div><div class="line">   B. 导入的对象在该数据库的指定用户下已经存在&lt;br&gt;</div><div class="line">   C. 导入的对象的原本用户不在这个数据库里&lt;br&gt;</div><div class="line">解决 </div><div class="line"></div><div class="line">2. 所有对象全部导入到指定的账户下：</div><div class="line">    ``` imp system/root@ORCL file=d:\test.dmp fromuser=zjgl touser=zjgl_new</div></pre></td></tr></table></figure>
-<p> 其中fromuser=zjgl为.dmp文件里的对象的原先的owner, touser=zjgl_new为作为导入的对象的新的Owner.</p>
-</li>
-<li><p>忽略/插入数据：</p>
- <figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\test.dmp ignore=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中ignore=y告诉imp.exe把数据直接插入到相应对象（并且如果导入的对象里面有其他的对象，如约束，索引等，会在数据插入后被创建）。</div><div class="line"></div><div class="line">4. 将d:\test.dmp中的表test1 导入</div><div class="line">    ```imp system/root@ORCL file=d:\test.dmp tables=(test1)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="expdpimpdp数据泵导入导出"><a href="#expdp-impdp-数据泵导入导出" class="headerlink" title="(expdp/impdp)数据泵导入导出"></a>(expdp/impdp)数据泵导入导出</h3><p>使用expdp和impdp时应该注重的事项：</p>
+        <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><blockquote>
+<p>定义和初始化</p>
+</blockquote>
 <ol>
-<li>exp和imp是客户端工具程序，它们既可以在客户端使用，也可以在服务端使用。</li>
-<li>expdp和impdp是服务端的工具程序，他们只能在oracle服务端使用，不能在客户端使用。</li>
-<li>imp只适用于exp导出的文件，不适用于expdp导出文件；impdp只适用于expdp导出的文件，而不适用于exp导出文件。</li>
-<li><p>对于10g以上的服务器，使用exp通常不能导出0行数据的空表，而此时必须使用expdp导出。</p>
-<p> 一 <figure class="highlight plain"><figcaption><span>sys/root@orcl as sysdba``` 登录dba用户<br></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    二 创建操作目录 ```create directory caozuo as &apos;R:\daochu&apos;;```&lt;br&gt;</div><div class="line">    三 查询是否存在 ```select * from dba_directories;```&lt;br&gt;</div><div class="line">    四 退出 sqlplus</div><div class="line"></div><div class="line">#### 导出</div><div class="line">1. 导出用户</div><div class="line">```expdp scott/tiger@orcl schemas=scott dumpfile=scott.dmp directory=caozuo logfile=expdb.log;</div></pre></td></tr></table></figure></p>
-<p>  导出日志必须有<strong>logfile=expdb.log</strong>，主要<strong>schemas=scott</strong></p>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Gerbil[] arr = new Gerbil[10];</div></pre></td></tr></table></figure>
 </li>
-<li><p>导出表</p>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl tables=emp,dept dumpfile=scott_emp_dept.dmp directory=caozuo logfile=expdb2.log;``</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     主要**tables=emp,dept**</div><div class="line"></div><div class="line">3. 按查询条件导```expdp scott/tiger@orcl directory=caozuo dumpfile=expdp_where.dmp tables=emp query=&apos;where deptno=20&apos;;</div></pre></td></tr></table></figure>
-<p>  <strong>query=’where deptno=20’</strong></p>
+</ol>
+<a id="more"></a>
+<ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   Gerbil[] arr2 = new Gerbil[]&#123;</div><div class="line">	new Gerbil(1),new Gerbil(2)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 </li>
-<li>按表空间导</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   Gerbil[] arr3 = &#123;</div><div class="line">	new Gerbil(1),new Gerbil(2)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=tablespace.dmp tablespaces=temp,example```;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">**tablespaces=temp,example**</div><div class="line"></div><div class="line">5. 导整个数据库</div><div class="line">```expdp scott/tiger@orcl directory=caozuo dumpfile=full.dmp full=y;</div></pre></td></tr></table></figure>
-<p><strong>full=y</strong></p>
-<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><ol>
-<li>导入用户（从用户scott导入到用户scott）</li>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>在jdk1.1和jdk1.2早期版中提供的基础版本有Java 提供了四种类型的“集合类”：Vector（矢量）、BitSet（位集）、Stack（堆栈）以及Hashtable（散列表）。<br></p>
+<h4 id="vector单纯的一个容器类似现在的arraylist"><a href="#Vector单纯的一个容器类似现在的ArrayList" class="headerlink" title="Vector单纯的一个容器类似现在的ArrayList"></a>Vector单纯的一个容器类似现在的ArrayList</h4><blockquote>
+<p>常用方法<br></p>
+</blockquote>
+<ul>
+<li>Object elementAt(int postion)取得指定位置的元素</li>
+<li>Enumeration elements() 获得对序列的一个“枚举”</li>
+<li>add();</li>
+<li>get(int pos);</li>
+</ul>
+<h4 id="stack-实现了一个-lifo先入先出序列"><a href="#Stack-实现了一个-LIFO（先入先出）序列" class="headerlink" title="Stack 实现了一个 LIFO（先入先出）序列"></a>Stack 实现了一个 LIFO（先入先出）序列</h4><ul>
+<li>push() 压入</li>
+<li>pop() 弹出</li>
+<li>empty() 判空</li>
+</ul>
+<h4 id="hashtable-是一种关联数组允许我们将任何对象关联起来从-dictionary-继承"><a href="#Hashtable-是一种“关联数组”，允许我们将任何对象关联起来，从-Dictionary-继承。" class="headerlink" title="Hashtable 是一种“关联数组”，允许我们将任何对象关联起来，从 Dictionary 继承。"></a>Hashtable 是一种“关联数组”，允许我们将任何对象关联起来，从 Dictionary 继承。</h4><ul>
+<li>put(Object key, Object value) 放入</li>
+<li>remove(Object Key) 移除</li>
+<li>get(Object key) 获得与某个键对应的值</li>
+<li>keys() 产生对键的一个枚举（Enumeration）</li>
+<li>elements() 产生对所有值的一个枚举</li>
+<li>isEmpty() 判断是否包含了元素<h4 id="枚举器-enumeration"><a href="#枚举器-Enumeration" class="headerlink" title="枚举器 Enumeration"></a>枚举器 Enumeration</h4></li>
+<li>hasMoreElements()</li>
+<li>nextElement()<h4 id="反复器-迭代器-iterator"><a href="#反复器-迭代器-Iterator" class="headerlink" title="反复器 迭代器 Iterator"></a>反复器 迭代器 Iterator</h4></li>
+</ul>
+<h3 id="新集合"><a href="#新集合" class="headerlink" title="新集合"></a>新集合</h3><img src="http://www.plantuml.com/plantuml/svg/XLDBJWCn3DtFAIAndXu0LKXL5r2fh5f0BDsfWQXXfYH1g09kmPubT-0yI5o3EEaapdp4QYRllTZFTYnhY_eEAXJpHYcih6pgGaPmAOrbnnNoqoNisMdXVi0sciiRRN6RomAM1vetZtlGi57O1_E8v2ScWesn6YehAWN6YDdnIFb6A5RZYC8NFCAHwL7gwHbhAq7v086y0FFWp8YJSurOtw9IpGkZNBWXQgOr72XAJXR9kvY-JIPXD5sGBBRzIRBOCNBZKTwh2APnyR2E8CMf-Ftu_Fd-Ok4TmuHHm3DwaIycyLtF0yEXrZ1BL5LVbT_sxV2P-l1_Tob-JCb1rYP7bcKxqYAsAi1hDoY2subxS2dh7MxR6xrGYoqz67iO5TmWx4P98jP-OzBoY6bPdl6zOQMaMxokI501H1o_tG9yWzfHv3TuemDpxLhiaeTFW5OMgjs0DBxrBfVD8LkjOPWRzhAzImZtAAwiL4Qy5a8SDpQz0PD0xyCKxty0">
+<h4 id="collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h4><blockquote>
+<p>常用方法</p>
+</blockquote>
+<p>boolean add(Object) ＊保证集合内包含了自变量。如果它没有添加自变量，就返回 false（假）<br><br>boolean addAll(Collection) ＊添加自变量内的所有元素。如果没有添加元素，则返回 true（真）<br><br>void clear() ＊删除集合内的所有元素<br><br>boolean contains(Object) 若集合包含自变量，就返回“真”<br><br>boolean containsAll(Collection) 若集合包含了自变量内的所有元素，就返回“真”<br><br>boolean isEmpty() 若集合内没有元素，就返回“真”<br><br>Iterator iterator() 返回一个反复器，以用它遍历集合的各元素<br><br>boolean remove(Object) ＊如自变量在集合里，就删除那个元素的一个实例。如果已进行了删除，就返回“真”<br><br>boolean removeAll(Collection) ＊删除自变量里的所有元素。如果已进行了任何删除，就返回“真”<br><br>boolean retainAll(Collection) ＊只保留包含在一个自变量里的元素（一个理论的“交集”）。如果已进行了任何改变，就返回“真”<br><br>int size() 返回集合内的元素数量<br><br>Object[] toArray() 返回包含了集合内所有元素的一个数组<br></p>
+<h4 id="list"><a href="#List" class="headerlink" title="List"></a>List</h4><blockquote>
+<p>常用实现</p>
+</blockquote>
+<p>List（接口） 顺序是 List 最重要的特性；它可保证元素按照规定的顺序排列。<br></p>
+<ul>
+<li>ArrayList 由一个<strong>数组</strong>后推得到的 List。作为一个常规用途的对象容器使用，用于替换原先的Vector。允许我们<strong>快速访问元素</strong>，但在<strong>从列表中部插入和删除元素时，速度却嫌稍慢</strong>。一般只应该用ListIterator对一个ArrayList进行向前和向后遍历，<strong>不要用它删除和插入元素</strong></li>
+<li>LinkedList 提供优化的顺序访问性能，同时可以高效率地在列表中部进行插入和删除操作。但在<strong>进行随机访问时，速度却相当慢</strong>，此时应换用 ArrayList。也提供了addFirst()，addLast()，getFirst()，getLast()，removeFirst()以及removeLast()，以便将其作为一个规格、队列以及一个双向队列使用.</li>
+</ul>
+<h4 id="set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><ol>
+<li>Set拥有与 Collection完全相同的接口,没有什么额外的功能.</li>
+<li>添加到 Set的每个元素都必须是独一无二的；否则Set就不会添加重复的元素。</li>
+<li>添加到 Set里对象必须定义equals()，从而建立对象的唯一性。</li>
+<li>Set不能保证自己可按任何特定的顺序维持自己的元素</li>
 </ol>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=expdp.dmp ```**schemas=scott**;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2. 导入表（从scott用户中把表dept和emp导入到system用户中）</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp`` </div><div class="line">    **tables=scott.dept,scott.emp remap_schema=scott:system**;</div><div class="line"></div><div class="line">3. 导入表空间</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=tablespace.dmp ```**tablespaces=example**;</div><div class="line"></div><div class="line">4. 导入数据库</div><div class="line"></div><div class="line">```impdb system/manager@orcl directory=caozuo dumpfile=full.dmp``` **full=y**;</div><div class="line"></div><div class="line">5. 追加数据</div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp``` **schemas=system table_exists_action**</div><div class="line"></div><div class="line">### 函数</div><div class="line">#### 单行函数</div><div class="line">```coalesce(arg,arg1,...)``` 从左侧开始，第一个不为空的值&lt;br&gt;</div><div class="line">```nullif(A,B)```A和B相等返回NULL,否则返回A&lt;br&gt;</div><div class="line">```rtrim()```将右边的空格压缩类似ltrim()&lt;br&gt;</div><div class="line">```select NEXT_DAY(sysdate,&apos;星期五&apos;) from dual;``` &lt;br&gt;</div><div class="line">```trunc(sysdate,&apos;hh24&apos;)</div></pre></td></tr></table></figure>
-<h4 id="11g新函数"><a href="#11g新函数" class="headerlink" title="11g新函数"></a>11g新函数</h4><p>分组函数 可使用over()函数；示范：<code>select ename,deptno,avg(sal) over(partition by deptno) avgsal from emp;</code><br>Pivot 和 unpivot语法     <code>`http://blog.csdn.net/tianlesoftware/article/details/7060306</code></p>
+<ul>
+<li>HashSet  用于存非常小的以外的所有Set。对象也必须定义 hashCode()</li>
+<li>ArraySet 由一个数组后推得到的 Set。面向非常小的Set设计，特别是那些需要频繁创建和删除的。对于小Set，与HashSet 相比，ArraySet 创建和反复所需付出的代价都要小得多。但随着 Set的增大，它的性能也会大打折扣。不需要HashCode()</li>
+<li>TreeSet 由一个“红黑树”后推得到的顺序 Set。这样一来，我们就可以从一个Set 里提到一个顺序集合</li>
+</ul>
+<h4 id="map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><ul>
+<li>HashMap 基于一个散列表实现（用它代替Hashtable）。针对“键－值”对的插入和检索，这种形式具有最稳定的性能。</li>
+<li>ArrayMap 由一个 ArrayList后推得到的Map。对反复的顺序提供了精确的控制。面向非常小的 Map设计，特别是那些需要经常创建和删除的。对于非常小的Map，创建和反复所付出的代价要比 HashMap低得多。但在Map变大以后，性能也会相应地大幅度降低</li>
+<li>TreeMap 在一个“红－黑”树的基础上实现。查看键或者“键－值”对时，它们会按固定的顺序排列（取决于Comparable 或Comparator，稍后即会讲到）。TreeMap最大的好处就是我们得到的是已排好序的结果。TreeMap是含有 subMap()方法的唯一一种Map，利用它可以返回树的一部分</li>
+</ul>
+<h3 id="arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h3><ul>
+<li>Arrays.sort(array[]); //排序</li>
+<li>Arrays.binarySearch(array[], array[pos]); //折半检索</li>
+<li>Arrays.toString(aList)。//输出List<blockquote>
+<p>对于基础数据类型binarySearch可以直接使用，若是对象，sort()和binarySearch()方法使用时，对象必须实现接口Comparable，或者在binarySearch传入第三个参数，一个实现Comparator接口的类。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>若在执行一次binarySearch()之前不调用 sort()，便会发生不可预测的行为，其中甚至包括无限循环。</p>
+</blockquote>
+<h3 id="collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h3><ul>
+<li>拥有与 Arrays 中差不多的签名</li>
+<li>sort(List)用于对一个实现了 Comparable的对象列表进行排序。</li>
+<li>binarySearch(List,Object)用于查找列表中的某个对象。</li>
+<li>sort(List,Comparator)利用一个“比较器”对一个列表进行排序。</li>
+<li>binarySearch(List,Object,Comparator)则用于查找那个列表中的一个对象。</li>
+<li>enumeration(Collection) 为自变量产生原始风格的Enumeration（枚举）</li>
+<li>max(Collection)，min(Collection) 在自变量中用集合内对象的自然比较方法产生最大或最小元素</li>
+<li>max(Collection,Comparator)，min(Collection,Comparator) 在集合内用比较器产生最大或最小元素</li>
+<li>nCopies(int n, Object o) 返回长度为 n 的一个不可变列表，它的所有句柄均指向o</li>
+</ul>
+<h3 id="使-collection或-map不可修改"><a href="#使-Collection或-Map不可修改" class="headerlink" title="使 Collection或 Map不可修改"></a>使 Collection或 Map不可修改</h3><ul>
+<li>创建 Collection或 Map的一个“只读”版本显得更有利一些</li>
+<li>Collections.unmodifiableCollection(c);</li>
+<li>Collections.unmodifiableList(a);</li>
+<li>Collections.unmodifiableSet(s);</li>
+<li>Collections.unmodifiableMap(m);</li>
+</ul>
+<h3 id="collection-或map-的同步"><a href="#Collection-或Map-的同步" class="headerlink" title="Collection 或Map 的同步"></a>Collection 或Map 的同步</h3><ul>
+<li>Collection c = Collections.synchronizedCollection(new ArrayList());</li>
+<li>List list = Collections.synchronizedList(new ArrayList());</li>
+<li>Set s = Collections.synchronizedSet(new HashSet());</li>
+<li>Map m = Collections.synchronizedMap(new HashMap());</li>
+</ul>
 
       
     </div>
@@ -553,7 +624,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
       
         <div class="post-tags">
           
-            <a href="/tags/培训笔记-oracle/" rel="tag"># 培训笔记 oracle</a>
+            <a href="/tags/java-数组-集合/" rel="tag"># java 数组 集合</a>
           
         </div>
       
@@ -566,8 +637,8 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/13/javaBase-多形性知识点/" rel="next" title="java基础 多形性[多态](java编程思想)">
-                <i class="fa fa-chevron-left"></i> java基础 多形性[多态](java编程思想)
+              <a href="/2017/08/03/javaEE-SpringStudy-环境搭建练习/" rel="next" title="spring学习 环境搭建练习">
+                <i class="fa fa-chevron-left"></i> spring学习 环境搭建练习
               </a>
             
           </div>
@@ -575,10 +646,6 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/14/javaEE-SpringStudy-spring概述/" rel="prev" title="spring学习 概述 (spring in action 4th)">
-                spring学习 概述 (spring in action 4th) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -708,7 +775,7 @@ system/root@ORCL file=d:\orcl.dmp full=y```123456    将数据库orcl完全导�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#expimp数据导入导出"><span class="nav-number">1.</span> <span class="nav-text">（exp/imp）数据导入导出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据导出exp"><span class="nav-number">1.1.</span> <span class="nav-text">数据导出(exp)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expdpimpdp数据泵导入导出"><span class="nav-number">2.</span> <span class="nav-text">(expdp/impdp)数据泵导入导出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导入"><span class="nav-number">2.1.</span> <span class="nav-text">导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11g新函数"><span class="nav-number">2.2.</span> <span class="nav-text">11g新函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合"><span class="nav-number">2.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vector单纯的一个容器类似现在的arraylist"><span class="nav-number">2.1.</span> <span class="nav-text">Vector单纯的一个容器类似现在的ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stack-实现了一个-lifo先入先出序列"><span class="nav-number">2.2.</span> <span class="nav-text">Stack 实现了一个 LIFO（先入先出）序列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hashtable-是一种关联数组允许我们将任何对象关联起来从-dictionary-继承"><span class="nav-number">2.3.</span> <span class="nav-text">Hashtable 是一种“关联数组”，允许我们将任何对象关联起来，从 Dictionary 继承。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#枚举器-enumeration"><span class="nav-number">2.4.</span> <span class="nav-text">枚举器 Enumeration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反复器-迭代器-iterator"><span class="nav-number">2.5.</span> <span class="nav-text">反复器 迭代器 Iterator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新集合"><span class="nav-number">3.</span> <span class="nav-text">新集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#collection"><span class="nav-number">3.1.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list"><span class="nav-number">3.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set"><span class="nav-number">3.3.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">3.4.</span> <span class="nav-text">Map</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arrays"><span class="nav-number">4.</span> <span class="nav-text">Arrays</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#collections"><span class="nav-number">5.</span> <span class="nav-text">Collections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使-collection或-map不可修改"><span class="nav-number">6.</span> <span class="nav-text">使 Collection或 Map不可修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#collection-或map-的同步"><span class="nav-number">7.</span> <span class="nav-text">Collection 或Map 的同步</span></a></li></ol></div>
             
 
           </div>
