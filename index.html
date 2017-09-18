@@ -1162,6 +1162,220 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/07/14/银海培训笔记-oracle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SkyMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9785339?v=3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mingCode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/14/银海培训笔记-oracle/" itemprop="url">
+                  培训笔记 银海 oracle
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T14:08:31+08:00">
+                2017-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/培训/" itemprop="url" rel="index">
+                    <span itemprop="name">培训</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/培训/银海/" itemprop="url" rel="index">
+                    <span itemprop="name">银海</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/培训/银海/oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/14/银海培训笔记-oracle/" class="leancloud_visitors" data-flag-title="培训笔记 银海 oracle">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,035
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="（exp-imp）数据导入导出"><a href="#（exp-imp）数据导入导出" class="headerlink" title="（exp/imp）数据导入导出"></a>（exp/imp）数据导入导出</h3><p> 是在cmd命令下，而不是sqlplus中。</p>
+<h4 id="数据导出-exp"><a href="#数据导出-exp" class="headerlink" title="数据导出(exp)"></a>数据导出(exp)</h4><ol>
+<li><p>完全导出 导出到D:\zjgl.dmp </p>
+<figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\orcl.dmp full=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限</div><div class="line"></div><div class="line">2. 将数据库orcl中zjgl用户与scott用户的表导出</div><div class="line"></div><div class="line">    ``` exp system/root@ORCL file=d:\zjgl_scott.dmp owner=(zjgl,scott)</div></pre></td></tr></table></figure>
+<p> full方式可以备份所有用户的数据库对象，包括表空间、用户信息等，owner=XX只能备份指定用户的对象，其他用户下的就不备份了，EXP中full=y和owner=XX是不能同时使用的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/14/银海培训笔记-oracle/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/07/14/javaEE-SpringStudy-spring概述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1335,220 +1549,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/14/javaEE-SpringStudy-spring概述/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://mingcode.cn/2017/07/14/银海培训笔记-oracle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SkyMing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/9785339?v=3&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mingCode">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/14/银海培训笔记-oracle/" itemprop="url">
-                  培训笔记 银海 oracle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-14T14:08:31+08:00">
-                2017-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/" itemprop="url" rel="index">
-                    <span itemprop="name">培训</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/银海/" itemprop="url" rel="index">
-                    <span itemprop="name">银海</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/培训/银海/oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">oracle</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/07/14/银海培训笔记-oracle/" class="leancloud_visitors" data-flag-title="培训笔记 银海 oracle">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,035
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="（exp-imp）数据导入导出"><a href="#（exp-imp）数据导入导出" class="headerlink" title="（exp/imp）数据导入导出"></a>（exp/imp）数据导入导出</h3><p> 是在cmd命令下，而不是sqlplus中。</p>
-<h4 id="数据导出-exp"><a href="#数据导出-exp" class="headerlink" title="数据导出(exp)"></a>数据导出(exp)</h4><ol>
-<li><p>完全导出 导出到D:\zjgl.dmp </p>
-<figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\orcl.dmp full=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限</div><div class="line"></div><div class="line">2. 将数据库orcl中zjgl用户与scott用户的表导出</div><div class="line"></div><div class="line">    ``` exp system/root@ORCL file=d:\zjgl_scott.dmp owner=(zjgl,scott)</div></pre></td></tr></table></figure>
-<p> full方式可以备份所有用户的数据库对象，包括表空间、用户信息等，owner=XX只能备份指定用户的对象，其他用户下的就不备份了，EXP中full=y和owner=XX是不能同时使用的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/14/银海培训笔记-oracle/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -311,6 +311,67 @@
     </entry>
     
     <entry>
+      <title><![CDATA[培训笔记 银海 oracle]]></title>
+      <url>http://mingcode.cn/2017/07/14/%E9%93%B6%E6%B5%B7%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0-oracle/</url>
+      <content type="html"><![CDATA[<h3 id="expimp数据导入导出"><a href="#（exp-imp）数据导入导出" class="headerlink" title="（exp/imp）数据导入导出"></a>（exp/imp）数据导入导出</h3><p> 是在cmd命令下，而不是sqlplus中。</p>
+<h4 id="数据导出exp"><a href="#数据导出-exp" class="headerlink" title="数据导出(exp)"></a>数据导出(exp)</h4><ol>
+<li><p>完全导出 导出到D:\zjgl.dmp </p>
+<figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\orcl.dmp full=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限</div><div class="line"></div><div class="line">2. 将数据库orcl中zjgl用户与scott用户的表导出</div><div class="line"></div><div class="line">    ``` exp system/root@ORCL file=d:\zjgl_scott.dmp owner=(zjgl,scott)</div></pre></td></tr></table></figure>
+<p> full方式可以备份所有用户的数据库对象，包括表空间、用户信息等，owner=XX只能备份指定用户的对象，其他用户下的就不备份了，EXP中full=y和owner=XX是不能同时使用的。</p>
+<a id="more"></a>
+</li>
+<li><p>将数据库orcl中的表t_users导出</p>
+<figure class="highlight plain"><figcaption><span>system/root@ORCL file= d:\t_users.dmp tables=(t_users)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    tables=xx 表示备份相关表，不能同时和owner、full使用。....更多操作百度。</div><div class="line"></div><div class="line">#### 数据导入(imp)</div><div class="line"></div><div class="line"></div><div class="line">1. 将D:\test.dmp 中的数据导入 test数据库中。</div><div class="line">    imp system/root@test file=D:\test.dmp</div><div class="line">导数据得时候，有可能报错。为什么？有以下主要的原因：</div><div class="line"></div><div class="line">   A. 导入的对象（表，视图，方法等）原本不属于当前连接的用户的&lt;br&gt;</div><div class="line">   B. 导入的对象在该数据库的指定用户下已经存在&lt;br&gt;</div><div class="line">   C. 导入的对象的原本用户不在这个数据库里&lt;br&gt;</div><div class="line">解决 </div><div class="line"></div><div class="line">2. 所有对象全部导入到指定的账户下：</div><div class="line">    ``` imp system/root@ORCL file=d:\test.dmp fromuser=zjgl touser=zjgl_new</div></pre></td></tr></table></figure>
+<p> 其中fromuser=zjgl为.dmp文件里的对象的原先的owner, touser=zjgl_new为作为导入的对象的新的Owner.</p>
+</li>
+<li><p>忽略/插入数据：</p>
+ <figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\test.dmp ignore=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中ignore=y告诉imp.exe把数据直接插入到相应对象（并且如果导入的对象里面有其他的对象，如约束，索引等，会在数据插入后被创建）。</div><div class="line"></div><div class="line">4. 将d:\test.dmp中的表test1 导入</div><div class="line">    ```imp system/root@ORCL file=d:\test.dmp tables=(test1)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="expdpimpdp数据泵导入导出"><a href="#expdp-impdp-数据泵导入导出" class="headerlink" title="(expdp/impdp)数据泵导入导出"></a>(expdp/impdp)数据泵导入导出</h3><p>使用expdp和impdp时应该注重的事项：</p>
+<ol>
+<li>exp和imp是客户端工具程序，它们既可以在客户端使用，也可以在服务端使用。</li>
+<li>expdp和impdp是服务端的工具程序，他们只能在oracle服务端使用，不能在客户端使用。</li>
+<li>imp只适用于exp导出的文件，不适用于expdp导出文件；impdp只适用于expdp导出的文件，而不适用于exp导出文件。</li>
+<li><p>对于10g以上的服务器，使用exp通常不能导出0行数据的空表，而此时必须使用expdp导出。</p>
+<p> 一 <figure class="highlight plain"><figcaption><span>sys/root@orcl as sysdba``` 登录dba用户<br></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    二 创建操作目录 ```create directory caozuo as &apos;R:\daochu&apos;;```&lt;br&gt;</div><div class="line">    三 查询是否存在 ```select * from dba_directories;```&lt;br&gt;</div><div class="line">    四 退出 sqlplus</div><div class="line"></div><div class="line">#### 导出</div><div class="line">1. 导出用户</div><div class="line">```expdp scott/tiger@orcl schemas=scott dumpfile=scott.dmp directory=caozuo logfile=expdb.log;</div></pre></td></tr></table></figure></p>
+<p>  导出日志必须有<strong>logfile=expdb.log</strong>，主要<strong>schemas=scott</strong></p>
+</li>
+<li><p>导出表</p>
+<figure class="highlight plain"><figcaption><span>scott/tiger@orcl tables=emp,dept dumpfile=scott_emp_dept.dmp directory=caozuo logfile=expdb2.log;``</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     主要**tables=emp,dept**</div><div class="line"></div><div class="line">3. 按查询条件导```expdp scott/tiger@orcl directory=caozuo dumpfile=expdp_where.dmp tables=emp query=&apos;where deptno=20&apos;;</div></pre></td></tr></table></figure>
+<p>  <strong>query=’where deptno=20’</strong></p>
+</li>
+<li>按表空间导</li>
+</ol>
+<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=tablespace.dmp tablespaces=temp,example```;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">**tablespaces=temp,example**</div><div class="line"></div><div class="line">5. 导整个数据库</div><div class="line">```expdp scott/tiger@orcl directory=caozuo dumpfile=full.dmp full=y;</div></pre></td></tr></table></figure>
+<p><strong>full=y</strong></p>
+<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><ol>
+<li>导入用户（从用户scott导入到用户scott）</li>
+</ol>
+<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=expdp.dmp ```**schemas=scott**;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2. 导入表（从scott用户中把表dept和emp导入到system用户中）</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp`` </div><div class="line">    **tables=scott.dept,scott.emp remap_schema=scott:system**;</div><div class="line"></div><div class="line">3. 导入表空间</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=tablespace.dmp ```**tablespaces=example**;</div><div class="line"></div><div class="line">4. 导入数据库</div><div class="line"></div><div class="line">```impdb system/manager@orcl directory=caozuo dumpfile=full.dmp``` **full=y**;</div><div class="line"></div><div class="line">5. 追加数据</div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp``` **schemas=system table_exists_action**</div><div class="line"></div><div class="line">### 函数</div><div class="line">#### 单行函数</div><div class="line">```coalesce(arg,arg1,...)``` 从左侧开始，第一个不为空的值&lt;br&gt;</div><div class="line">```nullif(A,B)```A和B相等返回NULL,否则返回A&lt;br&gt;</div><div class="line">```rtrim()```将右边的空格压缩类似ltrim()&lt;br&gt;</div><div class="line">```select NEXT_DAY(sysdate,&apos;星期五&apos;) from dual;``` &lt;br&gt;</div><div class="line">```trunc(sysdate,&apos;hh24&apos;)</div></pre></td></tr></table></figure>
+<h4 id="11g新函数"><a href="#11g新函数" class="headerlink" title="11g新函数"></a>11g新函数</h4><p>分组函数 可使用over()函数；示范：<code>select ename,deptno,avg(sal) over(partition by deptno) avgsal from emp;</code><br>Pivot 和 unpivot语法     <code>`http://blog.csdn.net/tianlesoftware/article/details/7060306</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 培训 </category>
+            
+            <category> 银海 </category>
+            
+            <category> oracle </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 培训笔记 oracle </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[spring学习 概述 (spring in action 4th)]]></title>
       <url>http://mingcode.cn/2017/07/14/javaEE-SpringStudy-spring%E6%A6%82%E8%BF%B0/</url>
       <content type="html"><![CDATA[<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Spring是一个开源框架，最早由Rod Johnson创建，并在《Expert One-on-One：J2EE Design andDevelopment》<br><a href="http://amzn.com/076454385" target="_blank" rel="external">地址</a>  这本著作中进行了介绍。Spring可以做很多事情，它为企业级开发提供给了丰富的功能，但是这些功能的底层都依赖<br>于它的两个核心特性，也就是<strong>依赖注入</strong>（dependency injection，<strong>DI</strong>）和<strong>面向切面编程</strong>（aspect-oriented programming，<strong>AOP</strong>）。</p>
@@ -409,67 +470,6 @@
         <tags>
             
             <tag> javaee spring 学习 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[培训笔记 银海 oracle]]></title>
-      <url>http://mingcode.cn/2017/07/14/%E9%93%B6%E6%B5%B7%E5%9F%B9%E8%AE%AD%E7%AC%94%E8%AE%B0-oracle/</url>
-      <content type="html"><![CDATA[<h3 id="expimp数据导入导出"><a href="#（exp-imp）数据导入导出" class="headerlink" title="（exp/imp）数据导入导出"></a>（exp/imp）数据导入导出</h3><p> 是在cmd命令下，而不是sqlplus中。</p>
-<h4 id="数据导出exp"><a href="#数据导出-exp" class="headerlink" title="数据导出(exp)"></a>数据导出(exp)</h4><ol>
-<li><p>完全导出 导出到D:\zjgl.dmp </p>
-<figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\orcl.dmp full=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    将数据库orcl完全导出，full=y 表示全库导出，缺省情况下full=no，这时只会将该用户下的对象导出。system/root一定要有dba权限</div><div class="line"></div><div class="line">2. 将数据库orcl中zjgl用户与scott用户的表导出</div><div class="line"></div><div class="line">    ``` exp system/root@ORCL file=d:\zjgl_scott.dmp owner=(zjgl,scott)</div></pre></td></tr></table></figure>
-<p> full方式可以备份所有用户的数据库对象，包括表空间、用户信息等，owner=XX只能备份指定用户的对象，其他用户下的就不备份了，EXP中full=y和owner=XX是不能同时使用的。</p>
-<a id="more"></a>
-</li>
-<li><p>将数据库orcl中的表t_users导出</p>
-<figure class="highlight plain"><figcaption><span>system/root@ORCL file= d:\t_users.dmp tables=(t_users)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    tables=xx 表示备份相关表，不能同时和owner、full使用。....更多操作百度。</div><div class="line"></div><div class="line">#### 数据导入(imp)</div><div class="line"></div><div class="line"></div><div class="line">1. 将D:\test.dmp 中的数据导入 test数据库中。</div><div class="line">    imp system/root@test file=D:\test.dmp</div><div class="line">导数据得时候，有可能报错。为什么？有以下主要的原因：</div><div class="line"></div><div class="line">   A. 导入的对象（表，视图，方法等）原本不属于当前连接的用户的&lt;br&gt;</div><div class="line">   B. 导入的对象在该数据库的指定用户下已经存在&lt;br&gt;</div><div class="line">   C. 导入的对象的原本用户不在这个数据库里&lt;br&gt;</div><div class="line">解决 </div><div class="line"></div><div class="line">2. 所有对象全部导入到指定的账户下：</div><div class="line">    ``` imp system/root@ORCL file=d:\test.dmp fromuser=zjgl touser=zjgl_new</div></pre></td></tr></table></figure>
-<p> 其中fromuser=zjgl为.dmp文件里的对象的原先的owner, touser=zjgl_new为作为导入的对象的新的Owner.</p>
-</li>
-<li><p>忽略/插入数据：</p>
- <figure class="highlight plain"><figcaption><span>system/root@ORCL file=d:\test.dmp ignore=y```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中ignore=y告诉imp.exe把数据直接插入到相应对象（并且如果导入的对象里面有其他的对象，如约束，索引等，会在数据插入后被创建）。</div><div class="line"></div><div class="line">4. 将d:\test.dmp中的表test1 导入</div><div class="line">    ```imp system/root@ORCL file=d:\test.dmp tables=(test1)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="expdpimpdp数据泵导入导出"><a href="#expdp-impdp-数据泵导入导出" class="headerlink" title="(expdp/impdp)数据泵导入导出"></a>(expdp/impdp)数据泵导入导出</h3><p>使用expdp和impdp时应该注重的事项：</p>
-<ol>
-<li>exp和imp是客户端工具程序，它们既可以在客户端使用，也可以在服务端使用。</li>
-<li>expdp和impdp是服务端的工具程序，他们只能在oracle服务端使用，不能在客户端使用。</li>
-<li>imp只适用于exp导出的文件，不适用于expdp导出文件；impdp只适用于expdp导出的文件，而不适用于exp导出文件。</li>
-<li><p>对于10g以上的服务器，使用exp通常不能导出0行数据的空表，而此时必须使用expdp导出。</p>
-<p> 一 <figure class="highlight plain"><figcaption><span>sys/root@orcl as sysdba``` 登录dba用户<br></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    二 创建操作目录 ```create directory caozuo as &apos;R:\daochu&apos;;```&lt;br&gt;</div><div class="line">    三 查询是否存在 ```select * from dba_directories;```&lt;br&gt;</div><div class="line">    四 退出 sqlplus</div><div class="line"></div><div class="line">#### 导出</div><div class="line">1. 导出用户</div><div class="line">```expdp scott/tiger@orcl schemas=scott dumpfile=scott.dmp directory=caozuo logfile=expdb.log;</div></pre></td></tr></table></figure></p>
-<p>  导出日志必须有<strong>logfile=expdb.log</strong>，主要<strong>schemas=scott</strong></p>
-</li>
-<li><p>导出表</p>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl tables=emp,dept dumpfile=scott_emp_dept.dmp directory=caozuo logfile=expdb2.log;``</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     主要**tables=emp,dept**</div><div class="line"></div><div class="line">3. 按查询条件导```expdp scott/tiger@orcl directory=caozuo dumpfile=expdp_where.dmp tables=emp query=&apos;where deptno=20&apos;;</div></pre></td></tr></table></figure>
-<p>  <strong>query=’where deptno=20’</strong></p>
-</li>
-<li>按表空间导</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=tablespace.dmp tablespaces=temp,example```;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">**tablespaces=temp,example**</div><div class="line"></div><div class="line">5. 导整个数据库</div><div class="line">```expdp scott/tiger@orcl directory=caozuo dumpfile=full.dmp full=y;</div></pre></td></tr></table></figure>
-<p><strong>full=y</strong></p>
-<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><ol>
-<li>导入用户（从用户scott导入到用户scott）</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>scott/tiger@orcl directory=caozuo dumpfile=expdp.dmp ```**schemas=scott**;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2. 导入表（从scott用户中把表dept和emp导入到system用户中）</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp`` </div><div class="line">    **tables=scott.dept,scott.emp remap_schema=scott:system**;</div><div class="line"></div><div class="line">3. 导入表空间</div><div class="line"></div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=tablespace.dmp ```**tablespaces=example**;</div><div class="line"></div><div class="line">4. 导入数据库</div><div class="line"></div><div class="line">```impdb system/manager@orcl directory=caozuo dumpfile=full.dmp``` **full=y**;</div><div class="line"></div><div class="line">5. 追加数据</div><div class="line">```impdp system/manager@orcl directory=caozuo dumpfile=expdp.dmp``` **schemas=system table_exists_action**</div><div class="line"></div><div class="line">### 函数</div><div class="line">#### 单行函数</div><div class="line">```coalesce(arg,arg1,...)``` 从左侧开始，第一个不为空的值&lt;br&gt;</div><div class="line">```nullif(A,B)```A和B相等返回NULL,否则返回A&lt;br&gt;</div><div class="line">```rtrim()```将右边的空格压缩类似ltrim()&lt;br&gt;</div><div class="line">```select NEXT_DAY(sysdate,&apos;星期五&apos;) from dual;``` &lt;br&gt;</div><div class="line">```trunc(sysdate,&apos;hh24&apos;)</div></pre></td></tr></table></figure>
-<h4 id="11g新函数"><a href="#11g新函数" class="headerlink" title="11g新函数"></a>11g新函数</h4><p>分组函数 可使用over()函数；示范：<code>select ename,deptno,avg(sal) over(partition by deptno) avgsal from emp;</code><br>Pivot 和 unpivot语法     <code>`http://blog.csdn.net/tianlesoftware/article/details/7060306</code></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 培训 </category>
-            
-            <category> 银海 </category>
-            
-            <category> oracle </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 培训笔记 oracle </tag>
             
         </tags>
         
